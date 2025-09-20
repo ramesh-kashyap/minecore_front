@@ -1,0 +1,47 @@
+.inp-con[data-v-877e6773] {
+    display: flex;
+    margin-bottom: .32rem
+}
+
+.inp-con .inp[data-v-877e6773] {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: .96rem;
+    padding: .24rem;
+    border-radius: .24rem;
+    border: 1px solid #ececec;
+    background: #fff
+}
+
+.inp-con .inp[data-v-877e6773]:focus-within {
+    border-color: #000
+}
+
+.inp-con .inp input[data-v-877e6773] {
+    min-width: 0;
+    flex: 1;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .34rem;
+    color: #000
+}
+
+.inp-con .inp input[data-v-877e6773]::placeholder {
+    font-weight: 400;
+    color: #b3b3b3
+}
+
+.inp-con .inp .icon[data-v-877e6773] {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.inp-con .inp .icon img[data-v-877e6773] {
+    vertical-align: middle;
+    height: .32rem
+}

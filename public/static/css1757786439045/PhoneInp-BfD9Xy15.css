@@ -1,0 +1,60 @@
+.inp-con[data-v-a2e94f62] {
+    display: flex;
+    height: .96rem;
+    padding: .24rem;
+    border-radius: .24rem;
+    border: 1px solid #ececec;
+    background: #fff
+}
+
+.inp-con[data-v-a2e94f62]:focus-within {
+    border-color: #000
+}
+
+.inp-con .inp[data-v-a2e94f62] {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.inp-con .inp input[data-v-a2e94f62] {
+    min-width: 0;
+    flex: 1;
+    font-family: PingFang SC;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .34rem
+}
+
+.inp-con .inp input[data-v-a2e94f62]::placeholder {
+    font-weight: 400;
+    color: var(--el-color-11)
+}
+
+.inp-con .inp .icon img[data-v-a2e94f62] {
+    vertical-align: middle;
+    height: .28rem
+}
+
+.inp-con .set_area[data-v-a2e94f62] {
+    margin-right: .24rem;
+    font-size: .3rem;
+    font-weight: 500;
+    color: var(--el-color-1);
+    display: flex;
+    align-items: center
+}
+
+.inp-con .set_area img[data-v-a2e94f62] {
+    margin-left: .1rem;
+    vertical-align: middle
+}
+
+.inp-con .set_area .icon[data-v-a2e94f62] {
+    margin-left: .08rem;
+    font-weight: 700;
+    font-size: .24rem
+}
