@@ -89,10 +89,7 @@ function AppContent() {
     location.pathname.startsWith("/dashboard/TradingChart");
 
     return (
-        <div className="uni-body pages-index-index">
-            <div className="uni-app uni-app--showtabbar uni-app--maxwidth">
-                <div className="ellipse" style={{ height: 60 }}></div>
-
+      <div data-v-72d7289a="" >
                 <Routes>
                     {/* Public Routes */}
                     <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
@@ -135,7 +132,7 @@ function AppContent() {
                 {!hideFooter && <Footer />}
                 <ToastContainer />
             </div>
-        </div>
+      
     );
 }
 
