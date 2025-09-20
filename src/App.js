@@ -52,6 +52,7 @@ import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NodeDetails from "./pages/home/NodeDetails";
  
 function AppContent() {
     const location = useLocation();
@@ -104,6 +105,7 @@ function AppContent() {
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
                     <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+                    <Route path="/earn" element={<NodeDetails />} />
 
                     <Route path="/trade" element={<ProtectedRoute><Trade /></ProtectedRoute>} />
                     <Route path="/assets" element={<ProtectedRoute><Assets /></ProtectedRoute>} />

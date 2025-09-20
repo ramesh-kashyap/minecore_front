@@ -4,208 +4,27 @@ import { LogOut, Lock, User } from "lucide-react"; // Icons
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [username, setUsername] = useState("Guest");
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
-  const menuRef = useRef(null);
 
-  const getFirstLetter = (str) => str ? str.charAt(0).toUpperCase() : '';
-
-  useEffect(() => {
-    fetchUserInfo();
-  }, []);
-
-  const fetchUserInfo = async () => {
-    try {
-      const response = await Api.get('auth/userinfo');
-      if (response.data.status) {
-        setUsername(response.data.name);
-      }
-    } catch (err) {
-      console.error("❌ Error fetching user info:", err);
-    }
-  };
-
-  const navigate = useNavigate();
-  
-  // Function to open the logout confirmation popup
-  const handleLogoutClick = () => {
-    setIsPopupOpen(true); // Show the popup
-  };
-
-  // Function to handle logout
-  const handleLogoutConfirm = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-    setIsPopupOpen(false); // Close the popup after logout
-  };
-
-  // Function to close the popup
-  const handlePopupClose = () => {
-    setIsPopupOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    if (isMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMenuOpen]);
 
   return (
-    <div className="flex items-center justify-between py-2 mt-5 px-4 md:px-10 lg:px-10 xl:px-20">
-      {/* Logo Section */}
-      <a className="md:hidden" href="/">
-        <img
-          alt="Logo"
-          loading="lazy"
-          width="163"
-          height="40"
-          decoding="async"
-          className="max-w-[156px]"
-          src="/upnl/assets/icons/logo.png"
-          style={{ color: "transparent", width: "154px" }}
-        />
-      </a>
-      <div className="w-full flex flex-row justify-end md:justify-between">
-        {/* User Section */}
-        <div className="flex items-center h-[38px] text-gray-800 font-medium">
-          <a className="hidden md:flex h-[38px] bg-white p-1 rounded-full mr-3" href="/team">
-            <div className="flex items-center rounded-full pl-3 text-sm">
-              <img
-                alt="User Avatar"
-                loading="lazy"
-                width="16"
-                height="16"
-                decoding="async"
-                className="mr-3"
-                src="/upnl/assets/icons/icon_user_add.svg"
-                style={{ color: "transparent" }}
-              />
-              
-            </div>
-            <div class="flex ml-3 items-center justify-center rounded-full bg-gray-200 min-w-8 h-8 text-xs px-2">0</div>
-          </a>
-          <a className="flex flex-row gap-4 h-[38px] bg-white p-1 px-2 rounded-full md:mr-3" title="Wallet" href="/wallet">
-            <div className="flex flex-row justify-center items-center gap-2">
-              <div className="flex items-center justify-center font-bold">0</div>
-              <img
-                alt="MCC"
-                loading="lazy"
-                width="30"
-                height="30"
-                decoding="async"
-                className="w-[24px] h-[24px] md:w-[30px] md:h-[30px]"
-                src="upnl/assets/icons/logo_mcc_2.svg"
-                style={{ color: "transparent" }}
-              />
-            </div>
-            <div className="hidden md:flex flex-row justify-center items-center gap-2">
-              <div className="flex items-center justify-center font-bold">0</div>
-              <img
-                alt="POINT"
-                loading="lazy"
-                width="30"
-                height="30"
-                decoding="async"
-                className="w-[24px] h-[24px] md:w-[30px] md:h-[30px]"
-                src="upnl/assets/icons/logo_point_2.svg"
-                style={{ color: "transparent" }}
-              />
-            </div>
-          </a>
-        </div>
-
-        {/* Button Section */}
-        <div className="relative flex items-center space-x-2 font-semibold">
-        <span class="hidden lg:inline text-xl">Hello, {username}!</span>
-          {/* User Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="" style={{position:"relative"}}>
-            <div
-              className="flex items-center justify-center w-[40px] h-[38px] rounded-full text-[24px] font-semibold"
-              style={{
-                backgroundColor: "#0093E9",
-                backgroundImage: "linear-gradient(315deg, #0093E9 0%, #80D0C7 100%)",
-              }}
-            >
-              {getFirstLetter(username)}
-            </div>
-          </button>
-   
-          {/* Dropdown Menu */}
-          {isMenuOpen && (
-            <div ref={menuRef} className="absolute right-0 top-10 mt-2 w-[182px] bg-white text-sm font-medium rounded-[16px] shadow-lg p-3 z-10">
-              <ul className="py-2">
-                <li className="flex items-center w-full mb-2 h-[42px] text-gray-700 hover:bg-gray-200 p-4 rounded-[16px]">
-                  <Link to="/profile" className="flex gap-2 items-center w-full">
-                    <User size={20} />
-                    Profile
-                  </Link>
-                </li>
-                <li className="flex items-center w-full mb-2 h-[42px] text-gray-700 hover:bg-gray-200 p-4 rounded-[16px]">
-                  <Link to="/security" className="flex gap-2 items-center w-full">
-                    <Lock size={20} />
-                    Security
-                  </Link>
-                </li>
-
-                <li onClick={handleLogoutClick} className="cursor-pointer flex gap-2 items-center h-[42px] w-full text-red-500 hover:bg-red-100 p-4 rounded-[16px]">
-                  <LogOut size={20} />
-                  Logout
-                </li>
-              </ul>
-            </div>
-          )}
-
-          {/* Language Button */}
-          <div className="hidden md:inline-block">
-            <div className="relative inline-block text-[16px] font-bold">
-              <button className="flex p-2 items-center bg-white border justify-center align-center h-[38px] w-[60px] rounded-[20px] hover:bg-gray-200 focus:outline-none">
-                EN
-              </button>
+    <div data-v-72d7289a="" class="headers">
+      <div data-v-e457753b="" data-v-fee66994="" class="main-header on">
+        <div data-v-e457753b="" class="left"><img data-v-e457753b="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAYAAAAqXEs9AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcSURBVHgB7ZXRDUBAEESHCpRwJShBCTpSyrWiAyUoQQmsOB+Evbhkycm8ZBKx3n7I5QbYqCSdZJQMEi9xiGPiuTCYTxkjy808fzHc45XFZt6kfDApi028IjxoFDfvTbxS0ivzT2YN7n9hrcimXovjyR+CGMPcW+8Hh+e87RGSH2x7sO0TPbY92PZse0IygW0Ptn2ix7YH2/5vbb8AJnhQUjyfYQ4AAAAASUVORK5CYII=" alt="" /></div>
+        <div data-v-e457753b="" class="right">
+          <div data-v-e457753b="" class="customer">
+            <img data-v-e457753b="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIkSURBVHgB3ZiNdcIgEMf/dQJHYAQ3kE5QR8gGuoFsoBvoBq0T2E5gN0g2sBtYTskrOTCBAD5ff+/dMx/AnXdwB3nBeKZaFlrmWmZahHlG/GhptHxr+dLyYZ49BKFlo+Ws5RIhO9O3GFNj2CVRNojgJbCd0HKE6wEKG4XxgFtI7TBS2Cn8C8941PbV/CYjtNToeoHCq/A35/qgNpVnjBoZQi48A28RZphvrD0yG8mNU0hHwTVyzB/GGvmNa1FIWDiEgJsicrNlOkRE36tBWSezBwqrnUu3MR3tf1ahHArdzBA0FyskuD4S7sWKN5h4Os2t6zYBl6JN9D7dV3wGzqzrT5TncEe3g4Bba99RNsQStxJqz8OdT+cM/buTNfKz7NFXw/KmgFsxfCKRDxmg72xs6+S8tmLQABUz/Ih88LCujE4Ft+53jFBsIMk6jKqZDJ5n+XZMoRvqwTDa73tXWSCSjdn7foI4cngwilgDH86/MzDH0TFqDDKwse4le89XWIN0GnYv2f2ct+Ubx7XpRLnJri6l8iClksroXMOzURYIO4RL5EMG6Kth1eQZ+svdCvlR6C9zTs4VuB0La6sR7WYkyiGMDl7eBJ4IWoid0mbzDHnwzbpu8GQIPO6AFg3VdXth1ihQ65cY3uye4HpGmOdFvVdhOJf5CoDv42fwoT2GU6SB92SPQqQa1m71i1GPNOqI8I+fSawQZ1xRb92jwvBcrFOM+wXp7n2Zcm6yKQAAAABJRU5ErkJggg==" alt="" />
+          </div>
+          <div data-v-e457753b="" class="ques">
+            <div data-v-e457753b="" class="msg ques">
+              <div data-v-e457753b="" class="van-badge__wrapper">
+                <img data-v-e457753b="" src="data:image/png;base64,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" />
+              </div>
             </div>
           </div>
         </div>
- {/* Confirmation Popup */}
-{isPopupOpen && (
-  <div ref={menuRef} className="jsx-9b2c38d357270ef1 w-full fixed inset-0 flex items-center justify-center bg-black1 bg-opacity-50 z-[999999999]"style={{zIndex:"18"}}>
-    <div className="jsx-9b2c38d357270ef1 bg-white px-8 pt-10 pb-6 w-[385px] max-w-[90%] rounded-[20px] shadow-lg animate-fade-in">
-      <div className="jsx-9b2c38d357270ef1 flex justify-center mb-4">
-        <LogOut size={30} />
-      </div>
-      <h3 className="jsx-9b2c38d357270ef1 text-center font-semibold mb-10">
-        Confirmation of logout
-      </h3>
-      <div className="jsx-9b2c38d357270ef1 justify-center w-full">
-        <button onClick={handleLogoutConfirm} className="jsx-9b2c38d357270ef1 w-full bg-black text-white rounded-full px-6 py-2">
-          Confirm
-        </button>
-        <button onClick={handlePopupClose} className="jsx-9b2c38d357270ef1 w-full mt-2 bg-gray-200 text-black rounded-full px-6 py-2">
-          Cancel
-        </button>
       </div>
     </div>
-  </div>
-)}
 
-      </div>
-
-    
-      
-    
-    </div>
-    
   );
 };
 
