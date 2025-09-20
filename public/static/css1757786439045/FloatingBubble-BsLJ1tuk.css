@@ -1,0 +1,10 @@
+.touch-move-con[data-v-6df70459] {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 99
+}
