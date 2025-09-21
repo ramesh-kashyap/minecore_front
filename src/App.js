@@ -92,7 +92,7 @@ function AppContent() {
     return (
       <div data-v-72d7289a="" >
                 <Routes>
-                    {/* Public Routes */}
+                    {/* Public Routes */} 
                     <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
                     <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                     <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
@@ -106,15 +106,14 @@ function AppContent() {
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
                     <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
                     <Route path="/earn" element={<NodeDetails />} />
-
-                    <Route path="/trade" element={<ProtectedRoute><Trade /></ProtectedRoute>} />
-                    <Route path="/assets" element={<ProtectedRoute><Assets /></ProtectedRoute>} />
+                    <Route path="/trade" element={<Trade />} />
+                    <Route path="/assets" element={<Assets />} />
                     <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
                     <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
-                    <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
+                    <Route path="/wallet" element={<Wallet />} />
                     <Route path="/refer" element={<ProtectedRoute><Refer /></ProtectedRoute>} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
-                    <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} />
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>

@@ -8,7 +8,7 @@ import { useAuth } from "../../components/AuthContext";
 
 import Api from "../../Requests/Api";
 import Level from "./Level";
-
+                                                                                
 const Setting = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
