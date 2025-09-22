@@ -99,7 +99,7 @@ function AppContent() {
                     <Route path="/langauge" element={<Language />} />
  
                     {/* Protected Routes */}
-                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/notice" element={<ProtectedRoute><Notice /></ProtectedRoute>} />
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
