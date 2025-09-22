@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 // const symbols = ["dogeusdt", "ethusdt", "dotusdt", "nearusdt"];
 
 
-const RunRecord = () => {
+const Commission = () => {
    // const [selectedSymbol, setSelectedSymbol] = useState(null);
    // const navigate = useNavigate();
    // const [user, setUser] = useState(null);
@@ -273,7 +273,7 @@ const RunRecord = () => {
    );
 
 };
-export default RunRecord;
+export default Commission;
 
 
 
