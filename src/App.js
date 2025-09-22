@@ -10,7 +10,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 
-import Language from "./components/Langauge";
+import Langauge from "./components/Langauge";
 
 
 import Dashboard from "./pages/home/Dashboard";
@@ -27,7 +27,6 @@ import WithdrawReq from "./pages/Withdraw/WithdrawReq";
 import Assets from "./pages/assets/Assets";
 import Transaction from "./pages/Withdraw/Transaction";
 import Whistory from "./pages/Withdraw/Whistory";
-import Wallet from "./pages/invest/Wallet";
 import AddWallet from "./pages/Withdraw/AddWallet";
 import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 
@@ -56,6 +55,8 @@ import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Mining from "./pages/invest/Mining";
+import SubmitWithdraw from "./pages/assets/SubmitWithdraw";
 
  
 function AppContent() {
@@ -101,7 +102,7 @@ function AppContent() {
                     <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                     <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
                     <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-                    <Route path="/langauge" element={<Language />} />
+                    <Route path="/langauge" element={<Langauge />} />
  
                     {/* Protected Routes */}
                     <Route path="/commission" element={<Commission />} />
@@ -116,11 +117,12 @@ function AppContent() {
                     <Route path="/assets" element={<Assets />} />
                     <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
                     <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
-                    <Route path="/wallet" element={<Wallet />} />
+                    <Route path="/mining" element={<Mining />} />
                     <Route path="/refer" element={<Refer />} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/vip" element={<Vip />} />
+                    <Route path="/submit-withdraw" element={<SubmitWithdraw />} />
 
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
