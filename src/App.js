@@ -110,7 +110,6 @@ function AppContent() {
                     <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
                     <Route path="/earn" element={<Earn />} />
                     <Route path="/change-password" element={<ChangePassword />} />
-                    <Route path="/earn" element={<NodeDetails />} />
                     <Route path="/trade" element={<Trade />} />
                     <Route path="/assets" element={<Assets />} />
                     <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
@@ -121,8 +120,6 @@ function AppContent() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/vip" element={<Vip />} />
 
-                    <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} />
-                    {/* <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} /> */}
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
                     <Route path="/team" element={<Team />} />
