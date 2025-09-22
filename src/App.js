@@ -112,7 +112,7 @@ function AppContent() {
                     <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
                     <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
                     <Route path="/wallet" element={<Wallet />} />
-                    <Route path="/refer" element={<ProtectedRoute><Refer /></ProtectedRoute>} />
+                    <Route path="/refer" element={<Refer />} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/vip" element={<Vip />} />
