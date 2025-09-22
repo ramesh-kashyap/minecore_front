@@ -34,7 +34,7 @@ import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 import Server from "./pages/server/Server";
 
 import Profile from "./pages/profile/Profile";
-import ServerCommission from "./pages/profile/ServerCommission";
+// import ServerCommission from "./pages/profile/Commission";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
 
@@ -45,7 +45,8 @@ import Level from "./pages/profile/Level";
 import Setting from "./pages/profile/Setting";
 
 import Trade from "./pages/team/Trade";
-  
+  import Commission from "./pages/profile/Commission";
+
 // import Footer from "./components/Footer";
   
 import { AuthProvider } from "./components/AuthContext";
@@ -100,11 +101,12 @@ function AppContent() {
                     <Route path="/langauge" element={<Language />} />
  
                     {/* Protected Routes */}
+                    <Route path="/commission" element={<Commission />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/notice" element={<ProtectedRoute><Notice /></ProtectedRoute>} />
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
-                    <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+                    <Route path="/change-password" element={<ChangePassword />} />
                     <Route path="/earn" element={<NodeDetails />} />
                     <Route path="/trade" element={<Trade />} />
                     <Route path="/assets" element={<Assets />} />
@@ -114,7 +116,7 @@ function AppContent() {
                     <Route path="/refer" element={<Refer />} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} />
+                    {/* <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} /> */}
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
                     <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
