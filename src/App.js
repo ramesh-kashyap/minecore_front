@@ -46,7 +46,7 @@ import Setting from "./pages/profile/Setting";
 
 import Trade from "./pages/team/Trade";
   
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
   
 import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
@@ -55,39 +55,39 @@ import 'react-toastify/dist/ReactToastify.css';
 import NodeDetails from "./pages/home/NodeDetails";
  
 function AppContent() {
-    const location = useLocation();
-    const hiddenFooterRoutes = [
-        "/",                // Login default
-        "/login",
-        "/register",
-        "/team",
-        "/deposit-history",
-        "/withdraw-history",
-        "/withdraw-req",
-        "/Smartrade",
-        "/profile",
-        "/deposit",
-        "/add-walletAddress",
-        "/add-wallet",
-        "/forgot-password",
-        "/change-password",
-        "/notice",
-        "/server-commission",
-        "/refer",
-        "/kyc",
-        "/wallet",
-        "/langauge",
-        "/faq",
-        "/setting",
-        "/level"
-        // "/transaction"
-    ];
+    // const location = useLocation();
+    // const hiddenFooterRoutes = [
+    //     "/",                // Login default
+    //     "/login",
+    //     "/register",
+    //     "/team",
+    //     "/deposit-history",
+    //     "/withdraw-history",
+    //     "/withdraw-req",
+    //     "/Smartrade",
+    //     "/profile",
+    //     "/deposit",
+    //     "/add-walletAddress",
+    //     "/add-wallet",
+    //     "/forgot-password",
+    //     "/change-password",
+    //     "/notice",
+    //     "/server-commission",
+    //     "/refer",
+    //     "/kyc",
+    //     "/wallet",
+    //     "/langauge",
+    //     "/faq",
+    //     "/setting",
+    //     "/level"
+    //     // "/transaction"
+    // ];
 
-    // Check if current path matches any of the above OR dynamic TradingChart route
-    const hideFooter =
-    hiddenFooterRoutes.includes(location.pathname) ||
-    location.pathname.startsWith("/add-walletAddress") ||
-    location.pathname.startsWith("/dashboard/TradingChart");
+    // // Check if current path matches any of the above OR dynamic TradingChart route
+    // const hideFooter =
+    // hiddenFooterRoutes.includes(location.pathname) ||
+    // location.pathname.startsWith("/add-walletAddress") ||
+    // location.pathname.startsWith("/dashboard/TradingChart");
 
     return (
       <div data-v-72d7289a="" >
@@ -130,7 +130,7 @@ function AppContent() {
                 </Routes>
 
                 {/* Footer only if route not in hidden list */}
-                {!hideFooter && <Footer />}
+                {/* {!hideFooter && <Footer />} */}
                 <ToastContainer />
             </div>
       
