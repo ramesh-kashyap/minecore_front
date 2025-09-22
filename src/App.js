@@ -45,6 +45,7 @@ import Setting from "./pages/profile/Setting";
 import RechargeCurrency from "./pages/assets/SelectRechargeCourency";
 import SubmitRecharge from "./pages/assets/SubmitRecharge";
 import BillRecord from "./pages/assets/BillRecord";
+import BindEmail from "./pages/profile/BindEmail";
 
 import Trade from "./pages/team/Trade";
   import Commission from "./pages/profile/Commission";
@@ -133,6 +134,7 @@ function AppContent() {
                     <Route path="/withdraw-currency" element={<SelectRechargeCourency />} />
                     <Route path="/submit-recharge" element={<SubmitRecharge />} />
                     <Route path="/bill-record" element={<BillRecord />} />
+                    <Route path="/bind-email" element={<BindEmail />} />
 
                     <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
                     <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
