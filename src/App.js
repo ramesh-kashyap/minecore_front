@@ -37,7 +37,8 @@ import Profile from "./pages/profile/Profile";
 import ServerCommission from "./pages/profile/ServerCommission";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
-
+import NodeDetails from "./pages/home/NodeDetails";
+import Vip from "./pages/team/Vip";
 import Refer from "./pages/profile/Refer";
 import Kyc from "./pages/profile/Kyc";
 import Team from "./pages/profile/Team";
@@ -52,7 +53,7 @@ import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NodeDetails from "./pages/home/NodeDetails";
+
  
 function AppContent() {
     // const location = useLocation();
@@ -101,7 +102,7 @@ function AppContent() {
  
                     {/* Protected Routes */}
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/notice" element={<ProtectedRoute><Notice /></ProtectedRoute>} />
+                    <Route path="/notice" element={<Notice />} />
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
                     <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
@@ -114,10 +115,12 @@ function AppContent() {
                     <Route path="/refer" element={<ProtectedRoute><Refer /></ProtectedRoute>} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/vip" element={<Vip />} />
+
                     <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} />
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
-                    <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
+                    <Route path="/team" element={<Team />} />
                     
                     <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
                     <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
