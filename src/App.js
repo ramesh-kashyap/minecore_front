@@ -58,6 +58,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Mining from "./pages/invest/Mining";
 import SubmitWithdraw from "./pages/assets/SubmitWithdraw";
 import SelectRechargeCourency from "./pages/assets/SelectWithdrawCurrency";
+import About from "./pages/profile/About";
 
  
 function AppContent() {
@@ -111,7 +112,6 @@ function AppContent() {
                     <Route path="/notice" element={<Notice />} />
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
-                    <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
                     <Route path="/earn" element={<Earn />} />
                     <Route path="/change-password" element={<ChangePassword />} />
                     <Route path="/trade" element={<Trade />} />
@@ -123,6 +123,7 @@ function AppContent() {
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/vip" element={<Vip />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/submit-withdraw" element={<SubmitWithdraw />} />
 
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
