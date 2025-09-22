@@ -22459,7 +22459,7 @@ var Uc = function() {
                         h = 1 << this.F2,
                         v = a.t,
                         f = v - A,
-                        m = e ? ? me();
+                        m = e ?? me();
                     for (r.dlShiftTo(f, m), a.compareTo(m) >= 0 && (a[a.t++] = 1, a.subTo(m, a)), o.ONE.dlShiftTo(A, m), m.subTo(r, r); r.t < A;) r[r.t++] = 0;
                     for (; --f >= 0;) {
                         var y = a[--v] == l ? this.DM : Math.floor(a[v] * g + (a[v - 1] + h) * p);
@@ -22756,7 +22756,7 @@ for (eo = 10; eo < 36; ++eo) gc[Hn++] = eo;
 
 function tp(o, t) {
     var e = gc[o.charCodeAt(t)];
-    return e ? ? -1
+    return e ?? -1
 }
 
 function qo(o) {
@@ -26640,7 +26640,7 @@ function Yn(o) {
     }(t) : ie(t) ? function(a) {
         return function(n) {
             var i = o.scale.getLabel(n),
-                r = a.replace("{value}", i ? ? "");
+                r = a.replace("{value}", i ?? "");
             return r
         }
     }(t) : ge(t) ? function(a) {
@@ -26693,7 +26693,7 @@ function BQ(o, t) {
 
 function Yl(o) {
     var t = o.get("interval");
-    return t ? ? "auto"
+    return t ?? "auto"
 }
 
 function B1(o) {
@@ -27052,7 +27052,7 @@ function R1(o, t, e) {
 
 function LQ(o) {
     var t = Ti(o).autoInterval;
-    return t ? ? (Ti(o).autoInterval = o.calculateCategoryInterval())
+    return t ?? (Ti(o).autoInterval = o.calculateCategoryInterval())
 }
 
 function jQ(o) {
@@ -30760,7 +30760,7 @@ var aT = function(o) {
             var i = [];
             return e.each(e.mapDimension(a.dim), function(r, s) {
                 var c = n(s);
-                c = c ? ? NaN, i.push({
+                c = c ?? NaN, i.push({
                     dataIndex: s,
                     mappedValue: c,
                     ordinalNumber: r
@@ -31151,10 +31151,10 @@ var gT = function(o) {
             })
         }, t.prototype.getProgressive = function() {
             var e = this.option.progressive;
-            return e ? ? (this.option.large ? 5e3 : this.get("progressive"))
+            return e ?? (this.option.large ? 5e3 : this.get("progressive"))
         }, t.prototype.getProgressiveThreshold = function() {
             var e = this.option.progressiveThreshold;
-            return e ? ? (this.option.large ? 1e4 : this.get("progressiveThreshold"))
+            return e ?? (this.option.large ? 1e4 : this.get("progressiveThreshold"))
         }, t.prototype.brushSelector = function(e, a, n) {
             return n.point(a.getItemLayout(e))
         }, t.prototype.getZLevelKey = function() {
@@ -32163,7 +32163,7 @@ var oa = Math.PI,
                     u, g = t.get("nameRotate");
                 g != null && (g = g * oa / 180);
                 var p;
-                ah(i) ? u = Lt.innerTextLayout(o.rotation, g ? ? o.rotation, r) : (u = xT(o.rotation, i, g || 0, d), p = o.axisNameAvailableWidth, p != null && (p = Math.abs(p / Math.sin(u.rotation)), !isFinite(p) && (p = null)));
+                ah(i) ? u = Lt.innerTextLayout(o.rotation, g ?? o.rotation, r) : (u = xT(o.rotation, i, g || 0, d), p = o.axisNameAvailableWidth, p != null && (p = Math.abs(p / Math.sin(u.rotation)), !isFinite(p) && (p = null)));
                 var h = s.getFont(),
                     v = t.get("nameTruncate", !0) || {},
                     f = v.ellipsis,
@@ -32426,7 +32426,7 @@ function MT(o, t, e, a, n, i) {
     var d = c.label || (c.label = {});
     if (d.show == null && (d.show = !1), n === "cross") {
         var A = r.get(["label", "show"]);
-        if (d.show = A ? ? !0, !i) {
+        if (d.show = A ?? !0, !i) {
             var l = c.lineStyle = r.get("crossStyle");
             l && de(d, l.textStyle)
         }
@@ -33012,7 +33012,7 @@ var XT = function(o) {
                     }, !1);
                     if (ie(A)) {
                         var f = v.name;
-                        v.name = A.replace("{value}", f ? ? "")
+                        v.name = A.replace("{value}", f ?? "")
                     } else ge(A) && (v.name = A(v.name, v));
                     var m = new rt(v, null, this.ecModel);
                     return io(m, tr.prototype), m.mainType = "radar", m.componentIndex = this.componentIndex, m
@@ -35088,7 +35088,7 @@ var L7 = function() {
                     name: e
                 };
             if (ge(i)) return r.status = a, i(r);
-            if (ie(i)) return i.replace("{a}", e ? ? "")
+            if (ie(i)) return i.replace("{a}", e ?? "")
         }, t.prototype.setZoom = function(e) {
             this.option.zoom = e
         }, t.prototype.setCenter = function(e) {
@@ -37220,7 +37220,7 @@ function T8(o) {
         var n = [];
         Me(a) ? Ni(a, function(r, s) {
             var c = e[s];
-            n[c ? ? Ts] = r
+            n[c ?? Ts] = r
         }) : n[Ts] = a, a = R0(o, n)
     }
     for (var i = t.length - 1; i >= 0; i--) a[i] == null && (delete e[t[i]], t.pop())
@@ -37310,7 +37310,7 @@ var M8 = {
     },
     category: function(o) {
         var t = this.option.categories ? this.option.categoryMap[o] : o;
-        return t ? ? Ts
+        return t ?? Ts
     },
     fixed: Io
 };
@@ -38802,7 +38802,7 @@ var mM = function() {
     }(),
     Pa = function() {
         function o(t, e) {
-            this.inEdges = [], this.outEdges = [], this.edges = [], this.dataIndex = -1, this.id = t ? ? "", this.dataIndex = e ? ? -1
+            this.inEdges = [], this.outEdges = [], this.edges = [], this.dataIndex = -1, this.id = t ?? "", this.dataIndex = e ?? -1
         }
         return o.prototype.degree = function() {
             return this.edges.length
@@ -38850,7 +38850,7 @@ var mM = function() {
     }(),
     H0 = function() {
         function o(t, e, a) {
-            this.dataIndex = -1, this.node1 = t, this.node2 = e, this.dataIndex = a ? ? -1
+            this.dataIndex = -1, this.node1 = t, this.node2 = e, this.dataIndex = a ?? -1
         }
         return o.prototype.getModel = function(t) {
             if (!(this.dataIndex < 0)) {
@@ -39652,7 +39652,7 @@ var xM = ["itemStyle", "opacity"],
                 c = e.getItemLayout(a),
                 d = s.getModel("emphasis"),
                 A = s.get(xM);
-            A = A ? ? 1, n || Bo(i), i.useStyle(e.getItemVisual(a, "style")), i.style.lineJoin = "round", n ? (i.setShape({
+            A = A ?? 1, n || Bo(i), i.useStyle(e.getItemVisual(a, "style")), i.style.lineJoin = "round", n ? (i.setShape({
                 points: c.points
             }), i.style.opacity = 0, Xe(i, {
                 style: {
@@ -40296,7 +40296,7 @@ var qM = function(o) {
 function Wa(o, t, e, a, n, i) {
     o = o || 0;
     var r = e[1] - e[0];
-    if (n != null && (n = rn(n, [0, r])), i != null && (i = Math.max(i, n ? ? 0)), a === "all") {
+    if (n != null && (n = rn(n, [0, r])), i != null && (i = Math.max(i, n ?? 0)), a === "all") {
         var s = Math.abs(t[1] - t[0]);
         s = rn(s, [0, r]), n = i = rn(s, [n, i]), a = 0
     }
@@ -41171,7 +41171,7 @@ function cC(o) {
 function dC(o, t) {
     return o = wu(o),
         function(e) {
-            var a = t ? ? e,
+            var a = t ?? e,
                 n = a ? o.width : o.height,
                 i = a ? o.x : o.y;
             return [i, i + (n || 0)]
@@ -42267,7 +42267,7 @@ function AU(o, t) {
             A = Qc(s, .75),
             l = s[0],
             u = s[s.length - 1],
-            g = (n ? ? 1.5) * (A - c),
+            g = (n ?? 1.5) * (A - c),
             p = i ? l : Math.max(l, c - g),
             h = i ? u : Math.min(u, A + g),
             v = t.itemNameFormatter,
@@ -43389,10 +43389,10 @@ var NU = function(o) {
         return !!this.get(["effect", "show"])
     }, t.prototype.getProgressive = function() {
         var e = this.option.progressive;
-        return e ? ? (this.option.large ? 1e4 : this.get("progressive"))
+        return e ?? (this.option.large ? 1e4 : this.get("progressive"))
     }, t.prototype.getProgressiveThreshold = function() {
         var e = this.option.progressiveThreshold;
-        return e ? ? (this.option.large ? 2e4 : this.get("progressiveThreshold"))
+        return e ?? (this.option.large ? 2e4 : this.get("progressiveThreshold"))
     }, t.prototype.getZLevelKey = function() {
         var e = this.getModel("effect"),
             a = e.get("trailLength");
@@ -44493,7 +44493,7 @@ var gL = 2,
 
             function v(f, m) {
                 var y = f.get(m);
-                return y ? ? i.get(m)
+                return y ?? i.get(m)
             }
             u.dirtyStyle()
         }, t
@@ -45870,7 +45870,7 @@ function o9(o) {
 
 function Ov(o, t) {
     var e = o && o.name;
-    return e ? ? HL + t
+    return e ?? HL + t
 }
 
 function Vv(o, t) {
@@ -53477,7 +53477,7 @@ var IO = function(o, t) {
                 B = s,
                 S = r.get("formatter"),
                 x = a;
-            ie(S) && S ? x = S.replace("{name}", a ? ? "") : ge(S) && (x = S(a));
+            ie(S) && S ? x = S.replace("{name}", a ?? "") : ge(S) && (x = S(a));
             var P = v ? w.getTextColor() : i.get("inactiveColor");
             b.add(new be({
                 style: Re(w, {
@@ -53566,7 +53566,7 @@ function SO(o) {
 function Wf(o, t, e, a) {
     cl(o, t, e, a), e.dispatchAction({
         type: "legendToggleSelect",
-        name: o ? ? t
+        name: o ?? t
     }), sl(o, t, e, a)
 }
 
@@ -53873,7 +53873,7 @@ var qf = ae,
             return n.eachChild(function(r, s) {
                 var c = r.__legendDataIndex;
                 i == null && c != null && (i = s), c === e && (a = s)
-            }), a ? ? i
+            }), a ?? i
         }, t.type = "legend.scroll", t
     }(Aw);
 
@@ -55568,7 +55568,7 @@ function cV(o, t, e) {
 
 function Am(o) {
     var t = o.get("hoverLinkOnHandle");
-    return !!(t ? ? o.get("realtime"))
+    return !!(t ?? o.get("realtime"))
 }
 
 function lm(o) {

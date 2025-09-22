@@ -10658,7 +10658,7 @@ html.pc body {
 img {
     display: block;
     max-width: 100%;
-    user-drag: none;
+    userDrag: none;
     -webkit-user-drag: none
 }
 

@@ -23,7 +23,7 @@ const Assets = () => {
                         <div data-v-0b60bd9b="" class="info-top">
                             <div data-v-0b60bd9b="" class="box">
                                 <div data-v-0b60bd9b="" class="box-title">
-                                    <div data-v-0b60bd9b="" class="left">Total asset valuation <img data-v-0b60bd9b="" src="/img1757786439045/eye-open-DkqCxuTo.png"/></div>
+                                    <div data-v-0b60bd9b="" class="left">Total asset valuation <img data-v-0b60bd9b="" src="./static/img1757786439045/eye-open-DkqCxuTo.png"/></div>
                                 </div>
                                 <div data-v-0b60bd9b="" class="money"> $ <span data-v-0b60bd9b="">0</span></div>
                                 <ul data-v-0b60bd9b="" class="income">

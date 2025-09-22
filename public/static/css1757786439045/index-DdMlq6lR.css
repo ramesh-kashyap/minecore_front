@@ -1,0 +1,310 @@
+.list[data-v-657c427c] {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: .32rem;
+    border: 1px solid #EAEAEA;
+    background: #fff;
+    padding: .16rem .28rem
+}
+
+.list li[data-v-657c427c] {
+    width: 50%;
+    border-bottom: .02rem dashed #EBEBEB;
+    line-height: 100%;
+    padding: .32rem .16rem;
+    text-align: center
+}
+
+.list li[data-v-657c427c]:nth-last-child(-n+2) {
+    border: 0
+}
+
+.list li .title[data-v-657c427c] {
+    color: #909090;
+    margin-bottom: .16rem;
+    font-size: .24rem
+}
+
+.list li p[data-v-657c427c] {
+    color: #909090;
+    margin-top: .08rem;
+    font-size: .24rem;
+    line-height: .34rem
+}
+
+.list[data-v-4afb37b5] {
+    display: flex;
+    flex-direction: column;
+    border-radius: .32rem;
+    border: 1px solid #EAEAEA;
+    background: #fff;
+    padding: .32rem .28rem
+}
+
+.list .head[data-v-4afb37b5] {
+    color: #909090;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: .24rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .24rem
+}
+
+.item[data-v-4afb37b5] {
+    margin-bottom: .26rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.item[data-v-4afb37b5]:last-child {
+    margin-bottom: 0
+}
+
+.item .left[data-v-4afb37b5] {
+    display: flex;
+    align-items: center
+}
+
+.item .left .img[data-v-4afb37b5] {
+    margin-right: .16rem;
+    width: .72rem;
+    height: .72rem;
+    border-radius: 50%;
+    overflow: hidden
+}
+
+.item .left .name-con[data-v-4afb37b5] {
+    display: flex;
+    flex-direction: column
+}
+
+.item .left .name-con .coinName[data-v-4afb37b5] {
+    color: var(--el-color);
+    font-family: PingFang SC;
+    font-size: .28rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .4rem
+}
+
+.item .left .name-con .coinFullName[data-v-4afb37b5] {
+    color: #909090;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: .34rem
+}
+
+.item .right .total[data-v-4afb37b5] {
+    color: var(--el-color);
+    font-family: PingFang SC;
+    font-size: .32rem;
+    font-style: normal;
+    text-align: right;
+    font-weight: 500;
+    line-height: .44rem
+}
+
+.item .right .value[data-v-4afb37b5] {
+    color: #909090;
+    text-align: right;
+    font-family: PingFang SC;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: .34rem
+}
+
+.info-top[data-v-0b60bd9b] {
+    padding: 0 .32rem .32rem
+}
+
+.info-top .box[data-v-0b60bd9b] {
+    padding: .32rem;
+    border-radius: .32rem;
+    background: url(/static/img1757786439045/bg-info-DX2jWcgf.png) no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: .32rem
+}
+
+.info-top .box .box-title[data-v-0b60bd9b] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fffc;
+    font-size: .24rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: .16rem
+}
+
+.info-top .box .box-title .left[data-v-0b60bd9b] {
+    display: flex;
+    align-items: center
+}
+
+.info-top .box .box-title .link[data-v-0b60bd9b] {
+    border-radius: .16rem;
+    background: #fff;
+    padding: .1rem .24rem;
+    color: #000;
+    font-size: .24rem
+}
+
+.info-top .box .box-title img[data-v-0b60bd9b] {
+    width: .32rem;
+    height: .32rem;
+    margin-left: .16rem
+}
+
+.info-top .box .money[data-v-0b60bd9b],
+.info-top .box .use-money[data-v-0b60bd9b] {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .5rem;
+    margin-bottom: .32rem;
+    justify-content: center;
+    font-size: .48rem;
+    line-height: .48rem
+}
+
+.info-top .box .money span[data-v-0b60bd9b],
+.info-top .box .use-money span[data-v-0b60bd9b] {
+    width: fit-content;
+    margin-right: .08rem;
+    color: #fff;
+    text-align: center;
+    font-size: .48rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .5rem
+}
+
+.info-top .box .money-alive[data-v-0b60bd9b] {
+    margin-bottom: .32rem;
+    font-size: .28rem;
+    color: #fffc;
+    line-height: .28rem;
+    text-align: center
+}
+
+.info-top .box .money-alive span[data-v-0b60bd9b] {
+    color: #4fdd22
+}
+
+.info-top .box .use-money[data-v-0b60bd9b] {
+    font-size: .2rem;
+    line-height: .28rem
+}
+
+.info-top .box .use-money span[data-v-0b60bd9b] {
+    font-size: .2rem;
+    line-height: .28rem;
+    margin-left: .08rem;
+    margin-right: 0
+}
+
+.info-top .box .income[data-v-0b60bd9b] {
+    display: flex;
+    line-height: 100%;
+    justify-content: space-between
+}
+
+.info-top .box .income li[data-v-0b60bd9b] {
+    border-radius: .16rem;
+    background: #fff;
+    padding: .2rem .24rem;
+    width: 32%
+}
+
+.info-top .box .income li .title[data-v-0b60bd9b] {
+    color: #909090;
+    margin-bottom: .16rem;
+    font-size: .24rem;
+    display: flex;
+    justify-content: space-between;
+    line-height: .24rem
+}
+
+.info-top .box .income li .title img[data-v-0b60bd9b] {
+    width: .16rem;
+    height: .24rem
+}
+
+.info-top .ex[data-v-0b60bd9b] {
+    display: flex;
+    justify-content: space-between
+}
+
+.info-top .ex .ex-item[data-v-0b60bd9b] {
+    flex: 1
+}
+
+.info-top .ex .ex-item img[data-v-0b60bd9b] {
+    display: block;
+    height: .88rem;
+    margin: 0 auto .12rem
+}
+
+.info-top .ex .ex-item span[data-v-0b60bd9b] {
+    display: block;
+    color: var(--el-color-8);
+    font-size: .24rem;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+    line-height: .34rem
+}
+
+.info-cen[data-v-0b60bd9b] {
+    padding: .32rem
+}
+
+.info-cen .title[data-v-0b60bd9b] {
+    color: var(--el-color-2);
+    font-size: .32rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .44rem;
+    margin-bottom: .32rem
+}
+
+.bg[data-v-0b60bd9b] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+.tab[data-v-0b60bd9b] {
+    display: flex;
+    border-bottom: .02rem solid #ebebeb;
+    margin-bottom: .24rem
+}
+
+.tab li[data-v-0b60bd9b] {
+    margin-right: .42rem;
+    color: #909090;
+    font-size: .28rem;
+    font-weight: 400;
+    line-height: .28rem;
+    padding-bottom: .26rem;
+    border-bottom: .06rem solid transparent
+}
+
+.tab li.on[data-v-0b60bd9b] {
+    border-bottom-color: #000;
+    color: #000
+}
+
+.headerRight img[data-v-0b60bd9b] {
+    height: .4rem
+}

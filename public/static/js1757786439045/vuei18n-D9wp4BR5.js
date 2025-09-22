@@ -2482,7 +2482,7 @@ function Dt(e = {}, t) {
 
     function $(f) {
         const N = h(f);
-        return N ? ? (n ? n.tm(f) || {} : {})
+        return N ?? (n ? n.tm(f) || {} : {})
     }
 
     function pe(f) {

@@ -92,7 +92,7 @@ function fe(e, t, n = "/") {
         d = "";
     const g = t.indexOf("#");
     let i = t.indexOf("?");
-    return g < i && g >= 0 && (i = -1), i > -1 && (r = t.slice(0, i), a = t.slice(i + 1, g > -1 ? g : t.length), o = e(a)), g > -1 && (r = r || t.slice(0, g), d = t.slice(g, t.length)), r = Ot(r ? ? t, n), {
+    return g < i && g >= 0 && (i = -1), i > -1 && (r = t.slice(0, i), a = t.slice(i + 1, g > -1 ? g : t.length), o = e(a)), g > -1 && (r = r || t.slice(0, g), d = t.slice(g, t.length)), r = Ot(r ?? t, n), {
         fullPath: r + (a && "?") + a + d,
         path: r,
         query: o,
@@ -1030,7 +1030,7 @@ function an(e, t) {
 function Be(e) {
     return e ? e.aliasOf ? e.aliasOf.path : e.path : ""
 }
-const He = (e, t, n) => e ? ? t ? ? n,
+const He = (e, t, n) => e ?? t ?? n,
     ln = Ve({
         name: "RouterView",
         inheritAttrs: !1,
