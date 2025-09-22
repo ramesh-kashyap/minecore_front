@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+
 // import axios from "axios";
 // import Api from "../../Requests/Api";
 // import Collapse from 'react-collapse';
@@ -224,36 +228,54 @@ const Dashboard = () => {
                                  <div data-v-fee66994="" className="nav-item"onClick={() => handleNavigation('team')}><img data-v-fee66994="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250807/ba8dee81b91822ed9005d636d5ce05bb.png" alt="" /><span data-v-fee66994="">Team</span></div>
                                  <div data-v-fee66994="" className="nav-item"><img data-v-fee66994="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250807/faf40caea66a8ae8c30c8b0e2d997e66.png" alt="" /><span data-v-fee66994="">Tutorial</span></div>
                               </div>
-                              <div data-v-381cb7c5="" data-v-fee66994="" className="swiper-banner">
-                                 <div data-v-381cb7c5="" className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                                    <div className="swiper-wrapper" style={{
-                                       transform: "translate3d(-936px, 0px, 0px)",
-                                       transitionDuration: "0ms"
-                                    }}
-                                    >
-                                       <div data-v-381cb7c5="" className="swiper-slide" style={{ width: "468px" }}
-                                       >
-                                          <div data-v-381cb7c5="" className="item"><img data-v-381cb7c5="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/3dba3bfa067d5a4848e7e5feff60f33f.png" alt="" /></div>
-                                       </div>
-                                       <div data-v-381cb7c5="" className="swiper-slide swiper-slide-prev" style={{ width: "468px" }}
-                                       >
-                                          <div data-v-381cb7c5="" className="item"><img data-v-381cb7c5="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/c7b9925a8184df15bf8d1a073a549c63.png" alt="" /></div>
-                                       </div>
-                                       <div data-v-381cb7c5="" className="swiper-slide swiper-slide-active" style={{ width: "468px" }}>
-                                          <div data-v-381cb7c5="" className="item"><img data-v-381cb7c5="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/679e62054bb44c623b9e8f9715a67c8c.png" alt="" /></div>
-                                       </div>
-                                       <div data-v-381cb7c5="" className="swiper-slide swiper-slide-next" style={{ width: "468px" }}>
-                                          <div data-v-381cb7c5="" className="item"><img data-v-381cb7c5="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250806/02af219ae733b4477512639b70ad309a.png" alt="" /></div>
-                                       </div>
-                                    </div>
+                              <Swiper
+      modules={[Autoplay]}
+      spaceBetween={0}
+      slidesPerView={1}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      allowTouchMove={false} // ✅ disables manual swipe/click
+      loop
+      className="swiper-banner"
+    >
+      <SwiperSlide>
+        <div className="item">
+          <img
+            src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/3dba3bfa067d5a4848e7e5feff60f33f.png"
+            alt=""
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="item">
+          <img
+            src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/c7b9925a8184df15bf8d1a073a549c63.png"
+            alt=""
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="item">
+          <img
+            src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250507/679e62054bb44c623b9e8f9715a67c8c.png"
+            alt=""
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="item">
+          <img
+            src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250806/02af219ae733b4477512639b70ad309a.png"
+            alt=""
+          />
+        </div>
+      </SwiperSlide>
+    </Swiper>
 
-                                 </div>
-                              </div>
                               <div data-v-fee66994="" className="train">
 
                                  <div data-v-fee66994="" className="train-content">
-                                    <div data-v-fee66994="" className="li"><span data-v-fee66994="">Today's earnings(MCE)</span><span data-v-fee66994=""></span></div>
-                                    <div data-v-fee66994="" className="li"><span data-v-fee66994="">Cumulative income(MCE)</span><span data-v-fee66994=""></span></div>
+                                    <div data-v-fee66994="" className="li"><span data-v-fee66994="">Today's earnings(MCE)</span><span data-v-fee66994="">0</span></div>
+                                    <div data-v-fee66994="" className="li"><span data-v-fee66994="">Cumulative income(MCE)</span><span data-v-fee66994="">8</span></div>
                                  </div>
                               </div>
                               <div data-v-fee66994="" className="datamain">
@@ -328,27 +350,27 @@ const Dashboard = () => {
                               <ul data-v-fee66994="" className="list10">
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">Computing power income</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994=""></span> MCE </div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">20</span> MCE </div>
                                  </li>
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">Task benefits</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994=""></span> USDT </div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">0</span> USDT </div>
                                  </li>
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">Team Benefits</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994=""></span> MCE </div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">8</span> MCE </div>
                                  </li>
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">Direct push</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994=""></span> person</div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">40</span> person</div>
                                  </li>
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">2+3 generations</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">NaN</span> person</div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">50</span> person</div>
                                  </li>
                                  <li data-v-fee66994="">
                                     <div data-v-fee66994="" className="title">Team size</div>
-                                    <div data-v-fee66994="" className="val"><span data-v-fee66994=""></span> person</div>
+                                    <div data-v-fee66994="" className="val"><span data-v-fee66994="">567</span> person</div>
                                  </li>
                               </ul>
                               <div data-v-fee66994="" className="luckyBox">
