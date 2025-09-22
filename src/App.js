@@ -24,23 +24,24 @@ import Deposit from "./pages/invest/Deposit";
 import History from "./pages/invest/History";
 
 import WithdrawReq from "./pages/Withdraw/WithdrawReq";
-import Assets from "./pages/Withdraw/Assets";
+import Assets from "./pages/assets/Assets";
 import Transaction from "./pages/Withdraw/Transaction";
 import Whistory from "./pages/Withdraw/Whistory";
-import Wallet from "./pages/Withdraw/Wallet";
+import Wallet from "./pages/invest/Wallet";
 import AddWallet from "./pages/Withdraw/AddWallet";
 import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 
 import Server from "./pages/server/Server";
-
+    
 import Profile from "./pages/profile/Profile";
 // import ServerCommission from "./pages/profile/Commission";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
-
+import Earn from "./pages/incomes/Earn";
+import Vip from "./pages/team/Vip";
 import Refer from "./pages/profile/Refer";
 import Kyc from "./pages/profile/Kyc";
-import Team from "./pages/profile/Team";
+import Team from "./pages/team/Team";
 import Level from "./pages/profile/Level";
 import Setting from "./pages/profile/Setting";
 
@@ -53,7 +54,7 @@ import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NodeDetails from "./pages/home/NodeDetails";
+
  
 function AppContent() {
     // const location = useLocation();
@@ -103,9 +104,11 @@ function AppContent() {
                     {/* Protected Routes */}
                     <Route path="/commission" element={<Commission />} />
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/notice" element={<ProtectedRoute><Notice /></ProtectedRoute>} />
+                    <Route path="/notice" element={<Notice />} />
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
+                    <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+                    <Route path="/earn" element={<Earn />} />
                     <Route path="/change-password" element={<ChangePassword />} />
                     <Route path="/earn" element={<NodeDetails />} />
                     <Route path="/trade" element={<Trade />} />
@@ -116,10 +119,13 @@ function AppContent() {
                     <Route path="/refer" element={<Refer />} />
                     <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/vip" element={<Vip />} />
+
+                    <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} />
                     {/* <Route path="/server-commission" element={<ProtectedRoute><ServerCommission /></ProtectedRoute>} /> */}
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
-                    <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
+                    <Route path="/team" element={<Team />} />
                     
                     <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
                     <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
