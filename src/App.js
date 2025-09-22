@@ -57,6 +57,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Mining from "./pages/invest/Mining";
 import SubmitWithdraw from "./pages/assets/SubmitWithdraw";
+import SelectRechargeCourency from "./pages/assets/SelectWithdrawCurrency";
 
  
 function AppContent() {
@@ -128,6 +129,7 @@ function AppContent() {
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
                     <Route path="/team" element={<Team />} />
                     <Route path="/recharge-currency" element={<RechargeCurrency />} />
+                    <Route path="/withdraw-currency" element={<SelectRechargeCourency />} />
                     <Route path="/submit-recharge" element={<SubmitRecharge />} />
                     <Route path="/bill-record" element={<BillRecord />} />
 

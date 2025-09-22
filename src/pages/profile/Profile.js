@@ -20,6 +20,12 @@ const Profile = () => {
       navigate('/team');
       } else if (page === 'ChangePassword') {
       navigate('/change-password');
+      } else if (page === 'vip') {
+      navigate('/vip');
+      } else if (page === 'commission') {
+      navigate('/commission');
+       } else if (page === 'langauge') {
+      navigate('/langauge');
     } else {
       navigate('/'); // fallback
     }
@@ -60,7 +66,7 @@ const Profile = () => {
                     <div data-v-7f2127ce="">Level: </div>
                     <span data-v-7f2127ce="">VIP0</span>
                   </div>
-                  <div data-v-7f2127ce="" class="info-btn">Upgrade</div>
+                  <div data-v-7f2127ce="" class="info-btn"onClick={() => back('vip')}>Upgrade</div>
                 </div>
               </div>
             </div>
@@ -86,16 +92,16 @@ const Profile = () => {
                 </div>
               </div>
               <div data-v-32e9466d="" class="user-list">
-                <div data-v-32e9466d="" class="pel-item">
+                <div data-v-32e9466d="" class="pel-item" onClick={() => back('commission')}>
                   <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMHSURBVHgB7ZnhkdsgEIWfMynAHWRTQdzBkQrOqSBcBXEHViqIU8EpFSSpwHIFTiqwOvBdBRd2wGOEEQKk4Pvhb+aNJQsEC6tlkYAbN0Yxw/9FKN0rkdJC6cnoj9JO6RdeKWulo9LLgA5KEq8IUtpjuOM+QwgZTOlC7CJbpbnzfwPtLq05J6U7aPey4eufoN2rOAQ9ivao/kR4VPlajYlmYixbpyNVQt3KqbtFYSTyO3+icu4hUBD7od0jH3sWi80CYbqRE869CAVYovsAhlgbhbDXDokI3mIcC+v4b6Acd7yyzr/2lGugB4UhRPAG4yDr+NhTZoVu5yvzn49n6/gdIhhrQAyc77TWeYu4HOg5osxoA+xVc9FTplX6aH7tYx/2qD+hAALdyDEPlCUMr8zF1wLusB05KuSztu5zREE2TsOEdAjdXOoRBSF0Z4FX43lCfS7rJoKEwqyQl1USLjtf4UrUuNyosCsIT1lhrrnlN7gy9vPg23Wx+raaozu/sRoJaYtwiJO4dIuQ2KAVJqBOaPRlwBAyhuwH6ldIe+AnNSDGEJgOCmMQa4kJOz1zDPhsjnfm3NeZL/BHmAY6y2xwJWrELyQS/X4+NCOTkrsfqI0kdApA1jVh1GI6WqUf8HtFp1OxM+AikRZ5csVtkN3wVPuBWum90gOmHXkXgjO4Y7eULrVRKNJwELD3Dg8YRuAcYIRRA0/juS6UAiEvcdvCs2qX2FK63DvnsTsvb7k+FxLQD2aNdA4D18k6bhBngMD5bQXjfQFcw//US6SRElWo5x6n1fsbLqPboa/eEv2h8GQIYZjYcCicegSd1LGvhz6OSLuS7/uAgF6chOdaC/1K5Dv6w6VEmBbnCCKgn4klhgeH6ySlKoRwgveI9K0fu4aE/nYQ8wmKZ2OV0U4HwjhDBPSMbjHc4aO5X3TGOkM8BJ2/36E/G/0NHVW48Q+RHeF6O/PboAAEbcgBefnMaZQlJtwX5CIRZwjvzHj1FJiYFBcKwa4ioN2GcP6Yza/caxR6z3njRgb/AD7wsRjcpL2qAAAAAElFTkSuQmCC" alt="" class="img1"/>
                     <div data-v-32e9466d="">Profit</div>
                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2"/>
                     </div>
-                    <div data-v-32e9466d="" class="pel-item">
+                    {/* <div data-v-32e9466d="" class="pel-item">
                       <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMLSURBVHgB7dzxcdMwFAbw7zj+pxugERjBbNAN6k7ACMAEDRMkGwATuBuEDRImSJkg+OHkcjR6ji09W5b9/e7eXc+5JrE+O5ElKwAREREREREREZGuqOuprl1dR9a/2ta1rsthQHdoGj6XRklVT6e2MiVPuAVwZHWqLYxD4JHfv55gxAE4soKqwA1vcdtnZftLXT9A8lFzrzwm258RSfvsd6AzV9cB1220gwFf4/PIv7aBv61avUGYA8hEaABkhAEkxgASYwCJMYDEphCAq6vCpR9dgdcY//H1bdewU3mev0J+NhjxOsBS4dn2AQsx1e8A8/H0qeKXcGIMIDEGkBgDSCw0gMV8SfbwDgPRpttkssEhnvb8uXDwX8uY7UfbnKdcvd4jTs4BPMA/EzZaAOd6QLhcA5ADr0vbROvyInIUOITJMQCH20e+6X7I0ECJ9tsRK4TJMYC2dpBgvmCgAUXp/axaXrxAf7kFUEJ/zxuM1EPcwO4syC0A2Uff+11hRJKy9hnY9wjIKQAH/3vdIfDID70Qk7vivimPxXZLp0wbJv+Kpk16ixmK2CjbHeZLC+AXAsUEsFe2v8d8OWV7kgDIQEwA2un4G/O1V7Y7BBoigODTMQN7ZXuJkUmXS7pevi6ZQz85dUNlv7Wr31GH6LUlSxX6m8uF2BojuDu9kNZoJfrLLYAC+nseZIWkcGiWKrWNAO4QJrcAhHYWnNuhhOG9TccOxeHoAfejy4vEDD/kGIAoMYEADojvguUagJADL9mUZAVOyguH9gmaaL4ntVwlmXsAZ98RsB9cJWnnDwJwMC4xBpAYA0iMASQ2hQCC5lLnYgoB+OYPnrEQUwjgEZcGfzn9/YiF6PKDTUPb1/URC8Uv4cQYQGIMIDEGkBgDSIwB2BlslaRvsiFmDniOHPxzAdtb/9jlOuBnXZ9ebTvfmCUTM4seSjjR5sRN7hIs0G3ymXVdDkZWAI6sXmW6ZIk/X9+vzH++Hri9QpLV1AoD36jr0CxP4hlxqR2ahi9ARERERERERERERET0yl881qfEemMfdAAAAABJRU5ErkJggg==" alt="" class="img1"/>
                         <div data-v-32e9466d="">Coupon</div>
                         <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2"/>
-                        </div>
+                        </div> */}
                         <div data-v-32e9466d="" class="pel-item">
                           <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIsSURBVHgB7ZnLUcMwEIZ/HncowR0QOhA3btABogLSAaECTAVxB4EKAhWQDhwqSI7cQDu2J7IiW7K9Mgb8zezYjhVlf2m1egQYGfnfHIGfibJLZZGyT2VbBOQA3RHInL7Kr6fG+1VuL/l1DUbaCBCod9gFqyAfAQLNHV7n5XzKBushoSxV9uVhVC5WJg2nSfBU2ULZxrOuObLx04m7lg678BWUdhERWSpv67CLOkFLtCTWKqFKBfpjhrKIVo21RDke+0bvCekqfOh4/4b+WTUpfAxeKKYpAQi0Rw+bx7y+RNkTPNFDSMIfct43Vbaxd1jGhCuEmrAAb4YyKTJWCa4Qosoj7fkBfDPqDXYhOTFfcgkwW34GXkR+PTFfcIbQj8CdhQpS8FE7rkIJiNATYwhVcAs+BLJMZCWUgAS8VAr49SH0JwVstfsJBo5NwId2f4aBYxPwrN0LDLwXbFnoFVkYFTMgrckvUM/aeJ6A70SuVRTQslVfiwuP74TcCxQWowEpmh1zTIGgzvv4UELAY0dkIOF/GNbEllXOu44WZ8rutWfacNN4cMV3BD+onLmTOzfq36LjeErQsSsruMb+uJkiEInxQ5sOP0at/Yj9MJkhMDG6DywJe7YK1vIm0woH5qgXIlA+rtEboPeJMkI28GzZYo7dnEGhImF3vMjpIY9hnEhUp0z6vGpiI0ECA0LCL/cPznETCbuQoI5z/EtpUpzSUXzTypZrUTcyMmLhGzfuObQes/EmAAAAAElFTkSuQmCC" alt="" class="img1"/>
                             <div data-v-32e9466d="">Fund password</div>
@@ -118,7 +124,7 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div data-v-32e9466d="" class="user-list">
-                                  <div data-v-32e9466d="" class="pel-item">
+                                  <div data-v-32e9466d="" class="pel-item"onClick={() => back('langauge')}>
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANTSURBVHgB7Vn/ddsgEP6aCdwJSiaoNyjdICNog6QTRBvEnUDuBM0GOBM4ncDKBM4GLVTo+XQcCCQl/iP+3vuesUEH90PHgYELLvjY+ITloC3Xlt/858rT4dWy9fxjufM8O9wC7y2Pln8LebBsLBXOALfwB5QvOsZ3VeQWeRY3ljfoQmufMd55pMIbQ7L6UVjgVnh2i1DBgyDvAW+AlZ+QL7z2fXQhh4SMPRu38jK4EnucEsAi4BZ2kyvfV7E+lZCj2djK/64QesNgITwIgql1qHJNhjwDeZGSl2eHU4W0VdasX2MceuQZrsQdJkIhjG0elxuMx74EKrdmffydOmLi+9BgPLb5S2n8p5Rd+mxlWL8U6wrDVF0cSopNXpM+jW73NRjP7bnc+0WuyTw1G1PkhQZh6FQLLzqlTOXnpF6opYXGijm3aOXbO99WiMMVa4+WL+gKtldPDuX5FZ0nU1ZtvYw1meMzMqAxbiUe548oxzYhL0bNhVxBViCGneV3y2t0FurxjHK0rH3tZf9KPLNGBn5DjkvNxtEMVKEcFeIpWEH2SJanpcJMilX6gmmU4wZxBXpsEYbuKOjC9olxydjMgGYyYjAY7iUDSO8AtfYPnB8/STuIhCuksWhJOxGvqc6rkQducX7QMiJQZkwBjXiJ3JL2XE9JVl75udeROf9DUoDn9ArDnRmRyUqhSLtlfRrdy1ux31/Yd1GBp8hkTokGp4zTsv5SKNLuPaDRLdxR2rSyNkyN8lKiQTnohrnHxFIiVszRQ8SzbyvE4Sy4Q3fr1kKIVZxu6pTlF3Qb2Vgx12Lo8WtkosZw8+jL6Zz7nbk0OJXTk728YkJr0udic7OwMsbPock892yMQiHoefcYEWAwfC+MV0y6uTtgeOyk8c+h2LMNJoCfiA4IY7Zm/bmgCmyEeQ9MrsJE3CF0NYXGSJYQwJ/h6dKw/gozsUGoxCoyocmQ10AOH+lia4OFwAVTt1bI94KCbF2FcB9IlfLF4BezPe8RxmzqYpbHduwPEoM3qoR5ONHsM5Y1GoQWlrLVYmETQ4W8bb8/R7sd12SMd8rc4Z2gEJ5X59BZ/SyHJ4VOkRyPSBavMXPhS//N6uhu3ZQn/ZvV0RWGT/5zhwsuuGA2/gFUA3/QcLTR6AAAAABJRU5ErkJggg==" alt="" class="img1" />
                                     <div data-v-32e9466d="">Language</div>
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2" />
@@ -138,11 +144,11 @@ const Profile = () => {
                                     <div data-v-32e9466d="">About</div>
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2" />
                                   </div>
-                                  <div data-v-32e9466d="" class="pel-item">
+                                  {/* <div data-v-32e9466d="" class="pel-item">
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKOSURBVHgB7ZnRcdQwEIZ/MrxzHZyoIEcFiAoIHVwHhArOHRAqgA4IFVhUQKjgdBXcdQDSRJ5ZyZa8smU7mfib2Zk9n1fSyrtrSQZWVl42r1AGaWRn5Jpx78XIyci9EY2FEUZqI/8GSu3aWAQ742cMH3wjZ9fWIIaGkDDyx8iGXNNGFMPW2uzgz7wNq3eYMaTCsLlFPrdoh1M2nCcgnWzJtT3Rvxi5wzCsE1/Jb5vYF6fbRFfgPdVOBPoT9IjxHBl9CGQiGA1b+Y7x3DH6iToRC6HQQKGdYCfX+QXjsEldGXkTXBd4DF06hg9gIOF7X2E5KvhjkblGNZaH5mEV/nnVYSCIrrE8J6Jvwz+7HNBEF1geOugTx0DCj7sDluOAnhyIVaEa7QqgMS8iGIM28hZMBHjvgbkkLOvPyokaicFz10I3Rj6Ta3TNUoqN66fhm+tHoQC24WZGzpgOur/YcwyuwOMj0X9jOh6IPniT0wXNhT2mg+4RjijEDn5SFZ2ZABH0JfoMOCFEB6zhP+bSaPjvm5s+A44DNP4VpucXuvvu5DX6kZHGY9hy2JRcWwpzy23RRJbwY3LDsKkwbi+xQcYeoC+EaAwq8GZTEH2LfC7wQ1Wmbu5zgB4V/sV80HfN+9SNKQfso5Tk9z3KYNs9OImFpCK6BC90WwxdPvxA+tSiAi9HWMuK1BOQRC+5fBBET+UIqxqlHLiONDYXdNKix/bcxdyTJeUArTrJSjARtM9oBUw5QKuOBPNQqRAS7T15JykHFPyF1U9Mu5RukK6vBo1ECe/bUkq0T+cekE5qayNI5yrj/x3aFecTRr6DKiy3oR/y4aQTiXlPKGowcy73G5lE+2tNSWy1seGpsLKywuI/23NhSryajd0AAAAASUVORK5CYII=" alt="" class="img1" />
                                     <div data-v-32e9466d="">Clear cache</div>
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2" />
-                                  </div>
+                                  </div> */}
                                 </div>
                                 <div data-v-32e9466d="" class="logout-btn">Logout</div>
                             </div>

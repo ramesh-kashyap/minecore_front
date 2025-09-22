@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate,Link } from 'react-router-dom'; // Import Link for navigation
 import Api from '../../Requests/Api';
 
-const RechargeCurrency = () => {
-
-    const navigate = useNavigate(); // Hook for navigation
-      
-        const back = (page) => {
-        navigate(-1);
-        };
+const SelectRechargeCourency = () => {
+     const navigate = useNavigate(); // Hook for navigation
+   
+     const back = (page) => {
+     navigate(-1);
+     };
 // const navigate = useNavigate();
 
 //   const handleNavigation = (page) => {
@@ -39,9 +38,9 @@ const RechargeCurrency = () => {
    <div data-v-72d7289a="" className="headers">
       <div data-v-7401f0fe="" data-v-72d7289a="" className="inside-header">
          <div data-v-7401f0fe="" className="left">
-            <div data-v-7401f0fe="" className="back"onClick={back}><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" className="icon"/></div>
+            <div data-v-7401f0fe="" className="back"onClick={back} ><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" className="icon"/></div>
          </div>
-         <div data-v-7401f0fe="" className="title overflow1">Select the currency for deposit</div>
+         <div data-v-7401f0fe="" className="title overflow1">Select the currency for withdraw</div>
          <div data-v-7401f0fe="" className="right"></div>
       </div>
    </div>
@@ -103,7 +102,7 @@ const RechargeCurrency = () => {
     );
 };
 
-export default RechargeCurrency;
+export default SelectRechargeCourency;
 
 
 
