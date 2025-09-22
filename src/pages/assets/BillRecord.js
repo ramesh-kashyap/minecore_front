@@ -51,7 +51,7 @@ const BillRecord = () => {
                <div class="van-list__finished-text">
                   <div data-v-43ae51de="" data-v-a998da64="" class="empty">
                      <div data-v-43ae51de="" class="van-empty custom-image">
-                        <div class="van-empty__image" style={{width: "2rem", height: "2rem"}}><img src="/img1757786439045/empty-BkVz5juj.png"/></div>
+                        <div class="van-empty__image" style={{width: "2rem", height: "2rem"}}><img src="./static/img1757786439045/empty-BkVz5juj.png"/></div>
                         <p class="van-empty__description">No data yet</p>
                        
                      </div>
