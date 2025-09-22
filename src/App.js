@@ -34,7 +34,6 @@ import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 import Server from "./pages/server/Server";
     
 import Profile from "./pages/profile/Profile";
-// import ServerCommission from "./pages/profile/Commission";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
 import Earn from "./pages/incomes/Earn";
@@ -44,6 +43,9 @@ import Kyc from "./pages/profile/Kyc";
 import Team from "./pages/team/Team";
 import Level from "./pages/profile/Level";
 import Setting from "./pages/profile/Setting";
+import RechargeCurrency from "./pages/assets/SelectRechargeCourency";
+import SubmitRecharge from "./pages/assets/SubmitRecharge";
+import BillRecord from "./pages/assets/BillRecord";
 
 import Trade from "./pages/team/Trade";
   import Commission from "./pages/profile/Commission";
@@ -123,7 +125,10 @@ function AppContent() {
                     <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
                     <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
                     <Route path="/team" element={<Team />} />
-                    
+                    <Route path="/recharge-currency" element={<RechargeCurrency />} />
+                    <Route path="/submit-recharge" element={<SubmitRecharge />} />
+                    <Route path="/bill-record" element={<BillRecord />} />
+
                     <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
                     <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
                     <Route path="/withdraw-history" element={<ProtectedRoute><Whistory /></ProtectedRoute>} />
