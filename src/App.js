@@ -24,24 +24,24 @@ import Deposit from "./pages/invest/Deposit";
 import History from "./pages/invest/History";
 
 import WithdrawReq from "./pages/Withdraw/WithdrawReq";
-import Assets from "./pages/Withdraw/Assets";
+import Assets from "./pages/assets/Assets";
 import Transaction from "./pages/Withdraw/Transaction";
 import Whistory from "./pages/Withdraw/Whistory";
-import Wallet from "./pages/Withdraw/Wallet";
+import Wallet from "./pages/invest/Wallet";
 import AddWallet from "./pages/Withdraw/AddWallet";
 import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 
 import Server from "./pages/server/Server";
-
+    
 import Profile from "./pages/profile/Profile";
 import ServerCommission from "./pages/profile/ServerCommission";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
-import NodeDetails from "./pages/home/NodeDetails";
+import Earn from "./pages/incomes/Earn";
 import Vip from "./pages/team/Vip";
 import Refer from "./pages/profile/Refer";
 import Kyc from "./pages/profile/Kyc";
-import Team from "./pages/profile/Team";
+import Team from "./pages/team/Team";
 import Level from "./pages/profile/Level";
 import Setting from "./pages/profile/Setting";
 
@@ -106,7 +106,7 @@ function AppContent() {
                     <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
                     <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
                     <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
-                    <Route path="/earn" element={<NodeDetails />} />
+                    <Route path="/earn" element={<Earn />} />
                     <Route path="/trade" element={<Trade />} />
                     <Route path="/assets" element={<Assets />} />
                     <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
