@@ -31,7 +31,7 @@ import AddWallet from "./pages/Withdraw/AddWallet";
 import AddWalletAddress from "./pages/Withdraw/AddWalletAddress";
 
 import Server from "./pages/server/Server";
-    
+
 import Profile from "./pages/profile/Profile";
 import ChangePassword from "./pages/profile/ChangePassword";
 import PaymentPassword from "./pages/profile/PaymentPassword";
@@ -48,20 +48,23 @@ import BillRecord from "./pages/assets/BillRecord";
 import BindEmail from "./pages/profile/BindEmail";
 
 import Trade from "./pages/team/Trade";
-  import Commission from "./pages/profile/Commission";
+import Commission from "./pages/profile/Commission";
 
 // import Footer from "./components/Footer";
-  
+
 import { AuthProvider } from "./components/AuthContext";
 import { ProtectedRoute, PublicRoute } from './Helper/helper';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';     
 import Mining from "./pages/invest/Mining";
 import SubmitWithdraw from "./pages/assets/SubmitWithdraw";
 import SelectRechargeCourency from "./pages/assets/SelectWithdrawCurrency";
 import About from "./pages/profile/About";
+import PledgeRecord from './pages/assets/PledgeRecord';
+import ReleasedRecord from "./pages/assets/ReleasedRecord";
+import Task from "./pages/incomes/Task";
 
- 
+
 function AppContent() {
     // const location = useLocation();
     // const hiddenFooterRoutes = [
@@ -98,68 +101,72 @@ function AppContent() {
     // location.pathname.startsWith("/dashboard/TradingChart");
 
     return (
-      <div data-v-72d7289a="" >
-                <Routes>
-                    {/* Public Routes */} 
-                    <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
-                    <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-                    <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
-                    <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-                    <Route path="/langauge" element={<Langauge />} />
- 
-                    {/* Protected Routes */}
-                    <Route path="/commission" element={<Commission />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/notice" element={<Notice />} />
-                    <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
-                    <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
-                    <Route path="/earn" element={<Earn />} />
-                    <Route path="/change-password" element={<ChangePassword />} />
-                    <Route path="/trade" element={<Trade />} />
-                    <Route path="/assets" element={<Assets />} />
-                    <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
-                    <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
-                    <Route path="/mining" element={<Mining />} />
-                    <Route path="/refer" element={<Refer />} />
-                    <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/vip" element={<Vip />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/submit-withdraw" element={<SubmitWithdraw />} />
+        <div data-v-72d7289a="" >
+            <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
+                <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+                <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+                <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
+                <Route path="/langauge" element={<Langauge />} />
 
-                    <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
-                    <Route path="/level" element={<ProtectedRoute><Level/></ProtectedRoute>}/>
-                    <Route path="/team" element={<Team />} />
-                    <Route path="/recharge-currency" element={<RechargeCurrency />} />
-                    <Route path="/withdraw-currency" element={<SelectRechargeCourency />} />
-                    <Route path="/submit-recharge" element={<SubmitRecharge />} />
-                    <Route path="/bill-record" element={<BillRecord />} />
-                    <Route path="/bind-email" element={<BindEmail />} />
+                {/* Protected Routes */}
+                <Route path="/commission" element={<Commission />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/notice" element={<Notice />} />
+                <Route path="/setting" element={<ProtectedRoute><Setting /></ProtectedRoute>} />
+                <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
+                <Route path="/earn" element={<Earn />} />
+                <Route path="/change-password" element={<ChangePassword />} />
+                <Route path="/trade" element={<Trade />} />
+                <Route path="/assets" element={<Assets />} />
+                <Route path="/pledge-record" element={<PledgeRecord />} />
+                <Route path="/released-record" element={<ReleasedRecord />} />
+                <Route path="/task" element={<Task />} />
 
-                    <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
-                    <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
-                    <Route path="/withdraw-history" element={<ProtectedRoute><Whistory /></ProtectedRoute>} />
-                    <Route path="/smartrade" element={<ProtectedRoute><Smartrade /></ProtectedRoute>} />
-                    <Route path="/deposit" element={<ProtectedRoute><Deposit /></ProtectedRoute>} />
-                    <Route path="/dashboard/TradingChart/:symbol" element={<ProtectedRoute><TradingChart /></ProtectedRoute>} />
-                    <Route path="/add-wallet" element={<ProtectedRoute><AddWallet /></ProtectedRoute>} />
-                    <Route path="/add-walletAddress/:networkType" element={  <ProtectedRoute><AddWalletAddress /></ProtectedRoute>} />
-                </Routes>
+                <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
+                <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
+                <Route path="/mining" element={<Mining />} />
+                <Route path="/refer" element={<Refer />} />
+                <Route path="/Kyc" element={<ProtectedRoute><Kyc /></ProtectedRoute>} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/vip" element={<Vip />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/submit-withdraw" element={<SubmitWithdraw />} />
 
-                {/* Footer only if route not in hidden list */}
-                {/* {!hideFooter && <Footer />} */}
-                <ToastContainer />
-            </div>
-      
+                <Route path="/payment-password" element={<ProtectedRoute><PaymentPassword /></ProtectedRoute>} />
+                <Route path="/level" element={<ProtectedRoute><Level /></ProtectedRoute>} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/recharge-currency" element={<RechargeCurrency />} />
+                <Route path="/withdraw-currency" element={<SelectRechargeCourency />} />
+                <Route path="/submit-recharge" element={<SubmitRecharge />} />
+                <Route path="/bill-record" element={<BillRecord />} />
+                <Route path="/bind-email" element={<BindEmail />} />
+
+                <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
+                <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
+                <Route path="/withdraw-history" element={<ProtectedRoute><Whistory /></ProtectedRoute>} />
+                <Route path="/smartrade" element={<ProtectedRoute><Smartrade /></ProtectedRoute>} />
+                <Route path="/deposit" element={<ProtectedRoute><Deposit /></ProtectedRoute>} />
+                <Route path="/dashboard/TradingChart/:symbol" element={<ProtectedRoute><TradingChart /></ProtectedRoute>} />
+                <Route path="/add-wallet" element={<ProtectedRoute><AddWallet /></ProtectedRoute>} />
+                <Route path="/add-walletAddress/:networkType" element={<ProtectedRoute><AddWalletAddress /></ProtectedRoute>} />
+            </Routes>
+
+            {/* Footer only if route not in hidden list */}
+            {/* {!hideFooter && <Footer />} */}
+            <ToastContainer />
+        </div>
+
     );
 }
 
 function App() {
     return (
         <AuthProvider>
-           
-                <AppContent />
-           
+
+            <AppContent />
+
         </AuthProvider>
     );
 }

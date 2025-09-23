@@ -23,6 +23,9 @@ const Mining = () => {
             case 'assets':
                 navigate('/assets');
                 break;
+                case 'profile':
+                navigate('/profile');
+                break;
             default:
                 navigate('/'); // fallback route
         }
@@ -32,7 +35,7 @@ const Mining = () => {
         <div data-v-72d7289a="" data-v-6030fa02="" className="page mining-dark">
             <div data-v-72d7289a="" className="headers">
                 <div data-v-349a15ae="" data-v-6030fa02="" className="main-header">
-                    <div data-v-349a15ae="" class="left overflow1"><img data-v-349a15ae="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAYAAAAqXEs9AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcSURBVHgB7ZXRDUBAEESHCpRwJShBCTpSyrWiAyUoQQmsOB+Evbhkycm8ZBKx3n7I5QbYqCSdZJQMEi9xiGPiuTCYTxkjy808fzHc45XFZt6kfDApi028IjxoFDfvTbxS0ivzT2YN7n9hrcimXovjyR+CGMPcW+8Hh+e87RGSH2x7sO0TPbY92PZse0IygW0Ptn2ix7YH2/5vbb8AJnhQUjyfYQ4AAAAASUVORK5CYII=" alt="" /></div>
+                    <div data-v-349a15ae="" class="left overflow1"onClick={() => handleNavigation('profile')} ><img data-v-349a15ae="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAYAAAAqXEs9AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcSURBVHgB7ZXRDUBAEESHCpRwJShBCTpSyrWiAyUoQQmsOB+Evbhkycm8ZBKx3n7I5QbYqCSdZJQMEi9xiGPiuTCYTxkjy808fzHc45XFZt6kfDApi028IjxoFDfvTbxS0ivzT2YN7n9hrcimXovjyR+CGMPcW+8Hh+e87RGSH2x7sO0TPbY92PZse0IygW0Ptn2ix7YH2/5vbb8AJnhQUjyfYQ4AAAAASUVORK5CYII=" alt="" /></div>
                     <div data-v-349a15ae="" class="center">Mining</div>
                     <div data-v-349a15ae="" class="right"></div>
                 </div>
