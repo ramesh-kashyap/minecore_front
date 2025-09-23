@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
@@ -7,9 +7,14 @@ const ExchangeRecord = () => {
     const navigate = useNavigate(); // Hook for navigation
 
 
-    const back = (page) => {
-        navigate(-1);
-    }
+ const back = (page) => {
+      navigate(-1);
+   };
+
+   const [isOpen, setIsOpen] = useState(false);
+
+   const openPopup = () => setIsOpen(true);
+   const closePopup = () => setIsOpen(false);
     return (
         <div data-v-72d7289a="" data-v-ccc2b075="" class="page">
             <div data-v-72d7289a="" class="headers">
@@ -27,8 +32,8 @@ const ExchangeRecord = () => {
                         <div class="van-pull-refresh__head"></div>
                         <div data-v-ccc2b075="" class="container wrap">
                             <div data-v-ccc2b075="" class="box-select">
-                                <div data-v-ccc2b075="" class="item"><span data-v-ccc2b075="" class="pla overflow1">Select currency</span><img data-v-ccc2b075="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt=""/></div>
-                                <div data-v-ccc2b075="" class="item"><span data-v-ccc2b075="" class="pla overflow1">Select time</span><img data-v-ccc2b075="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt=""/></div>
+                                <div data-v-ccc2b075="" class="item" onClick={openPopup}><span data-v-ccc2b075="" class="pla overflow1">Select currency</span><img data-v-ccc2b075="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
+                                <div data-v-ccc2b075="" class="item" onClick={openPopup}><span data-v-ccc2b075="" class="pla overflow1">Select time</span><img data-v-ccc2b075="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
                             </div>
                             <div data-v-ccc2b075="" class="cards-con">
                                 <div data-v-a998da64="" data-v-ccc2b075="" role="feed" class="van-list" aria-busy="false">
@@ -48,12 +53,35 @@ const ExchangeRecord = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
-                <div data-v-6df70459="" data-v-72d7289a="" class="touch-move-con" style={{bottom: '1.3rem',right: '0.2rem'}}></div>
-                <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style={{zIndex: '2008'}}><div class="van-picker"><div class="van-picker__toolbar"><button type="button" class="van-picker__cancel van-haptics-feedback">Cancel</button><div class="van-picker__title van-ellipsis">Select Type</div><button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button></div><div class="van-picker__columns" style={{height: '264px'}}><div class="van-picker-column"><ul class="van-picker-column__wrapper" style={{transform: 'translate3d(0px, 110px, 0px)',transitionDuration: '0ms', transitionProperty: 'none'}}><li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style={{height: '44px'}}><div class="van-ellipsis">all</div></li><li role="button" tabindex="0" class="van-picker-column__item" style={{height: '44px'}}><div class="van-ellipsis">MCE</div></li><li role="button" tabindex="0" class="van-picker-column__item" style={{height: '44px'}}><div class="van-ellipsis">USDC</div></li><li role="button" tabindex="0" class="van-picker-column__item" style={{height: '44px'}}><div class="van-ellipsis">TRX</div></li></ul></div><div class="van-picker__mask" style={{backgroundSize: '100% 110px'}}></div><div class="van-hairline-unset--top-bottom van-picker__frame" style={{height: '44px'}}></div></div></div></div>
+             
             </div>
-
+    {isOpen && (
+          <>
+            <div class="van-overlay" role="button" tabindex="0" style={{ zIndex: '2010' }}></div>
+            <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style={{ zIndex: '2010' }}>
+              <div class="van-picker">
+                <div class="van-picker__toolbar">
+                  <button type="button" class="van-picker__cancel van-haptics-feedback" onClick={closePopup}>Cancel</button>
+                  <div class="van-picker__title van-ellipsis">Select currency</div>
+                  <button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button>
+                </div>
+                <div class="van-picker__columns" style={{ height: '264px' }}>
+                  <div class="van-picker-column">
+                    <ul class="van-picker-column__wrapper" style={{ transform: 'translate3d(0px, 110px, 0px)', transitionDuration: '0ms', transitionProperty: 'none' }}>
+                      <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style={{ height: '44px' }}>
+                        <div class="van-ellipsis">USDT</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="van-picker__mask" style={{ backgroundSize: '100% 110px' }}></div>
+                  <div class="van-hairline-unset--top-bottom van-picker__frame" style={{ height: '44px' }}></div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
         </div>
     );
 };
