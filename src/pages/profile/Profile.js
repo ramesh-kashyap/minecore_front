@@ -30,6 +30,10 @@ const Profile = () => {
       navigate('/about');
        } else if (page === 'bindEmail') {
       navigate('/bind-email');
+         } else if (page === 'info') {
+      navigate('/info');
+               } else if (page === 'bindddress') {
+      navigate('/bind-address');
     } else {
       navigate('/'); // fallback
     }
@@ -58,7 +62,7 @@ const Profile = () => {
                     <img src="https://mpool-all.s3.ap-southeast-1.amazonaws.com/upload/20240318/c5744e1544a6bf675d131fe3dbcd8c74.png" class="van-image__img" style={{ objectFit: 'cover' }} />
                   </div>
                 </div>
-                <div data-v-17f2272d="" class="info">
+                <div data-v-17f2272d="" class="info" onClick={() => back('info')}>
                   <div data-v-17f2272d="" class="name overflow1">Ashu123</div>
                   <div data-v-17f2272d="" class="invite"> UID：<span data-v-17f2272d="">900129957</span><img data-v-17f2272d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADBSURBVHgB7ZbhDYMgEIWfpgN0BEdgg9INukFXYSQ30G7gKN2g5RJMSURKq8f5417yosAl9+U4kmuQlw3mUO895QKM94vZts0A3MAveyoMfOJLuX4QVfY8L0oBKPkV+2hA1FcthDVXwGLZ7Zfov/N2+E/H6PYo3xDtO7qCKt2+diDeAwqgAAqgAAqgAKUT0Vbd8ZkvDAQAuuCFpK+gr1WB0fuR2JtqAVBylzrQZygOQLLgH8vNWvImfCmAazwfg5N6A3XBXqvrQUFJAAAAAElFTkSuQmCC" /></div>
                 </div>
@@ -121,7 +125,7 @@ const Profile = () => {
                                     <div data-v-32e9466d="">Login password</div>
                                     <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2"/>
                                     </div>
-                                    <div data-v-32e9466d="" class="pel-item">
+                                    <div data-v-32e9466d="" class="pel-item" onClick={() => back('bindddress')}>
                                       <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJNSURBVHgB7ZmBUcMwDEU/HAMwgtmgI7gTUCZomIBuUBiBCZpOUDZomIBukGxQNgDrEl+VEjt2Yrs9Lu9Oh3HU2rJlSU6BiYmJiUtyAz8WSl6UCMSlUrJVkiMQ90r2Sn4Sy74ZezSXmDw3woiLC2VKNuz/AvX2VogDrfhayYz1zZtxB8FX/wvp4ON+YAQl+6IF0pGxcUuT0i38+EY6KhclXwOujpgGrFD78bERame4APwMSAd9gfqwm8JiCbdEKOFwBmyUlkkM/ZxPNJOIcIj7yNBe3ULJE+o4vmX9FONXiMyQHdgznU3Pc2uGRQAXko1wQ1awnwNuZJfegj0/on/8XgPuLF9QdPQdYE/plCd08XVveB6U0GfgwNrLjudLg+5gQhvwydrkLnQOZNPeoZ0HtkiETx4gt7HlAJ9DKXGBMEo+TmGzsuiQ68wRiBilRKXkQckzTn5OhhVK3lBPvkIg7hCPHAHvtCb+dTVK6V6iHc91nw3S55UoT1y6IhVIgG8poe+yR7hd1tewv3GQSFiNCoM+GUNh9Xw3XEpriUQGiDNdmugr2m8VNNSXw80IiZEGaPoSWQm3FeWIjs+du5NEgkS2xmnCFdxj/LmuQMT7gWkHBNquIODPDG3X47sgEXkHJGvnGJZdKVProo4mn8ETXwMEaz+y9pjKMmdtydpBXuoSe3RfA3nVORYdYrmrlIZxW7jUQu84rQz9pYlTUabDZAW31y0uaDdaor3bo+8OfBdSyw4BuNofOHx/Ysrwd3tjQNGJXLfAxMTExFXzCxaRfnhol7tGAAAAAElFTkSuQmCC" alt="" class="img1" />
                                       <div data-v-32e9466d="">Bind address</div>
                                       <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2" />
