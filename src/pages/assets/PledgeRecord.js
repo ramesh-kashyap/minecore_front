@@ -1,17 +1,21 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom'; // Import Link for navigation
 const PledgeRecord = () => {
- const navigate = useNavigate(); // Hook for navigation
-      
-        const back = (page) => {
+    const navigate = useNavigate(); // Hook for navigation
+
+    const back = (page) => {
         navigate(-1);
-        };
+    };
+      const [isOpen, setIsOpen] = useState(false);
+    
+      const openPopup = () => setIsOpen(true);
+      const closePopup = () => setIsOpen(false);
     return (
         <div data-v-72d7289a="" data-v-d521d281="" class="page">
             <div data-v-72d7289a="" class="headers">
                 <div data-v-7401f0fe="" data-v-72d7289a="" class="inside-header">
                     <div data-v-7401f0fe="" class="left">
-                        <div data-v-7401f0fe="" class="back" onClick={back}><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" class="icon"/></div>
+                        <div data-v-7401f0fe="" class="back" onClick={back}><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" class="icon" /></div>
                     </div>
                     <div data-v-7401f0fe="" class="title overflow1">Pledge Record</div>
                     <div data-v-7401f0fe="" class="right"></div>
@@ -19,7 +23,7 @@ const PledgeRecord = () => {
             </div>
             <div data-v-72d7289a="" class="page-container">
                 <div data-v-72d7289a="" class="van-pull-refresh scroll" id="pageScroll">
-                    <div class="van-pull-refresh__track" style={{transitionDuration: '0ms'}}>
+                    <div class="van-pull-refresh__track" style={{ transitionDuration: '0ms' }}>
                         <div class="van-pull-refresh__head"></div>
                         <div data-v-d521d281="" class="income">
                             <div data-v-d521d281="" class="box">
@@ -42,32 +46,56 @@ const PledgeRecord = () => {
                             </div>
                             <div data-v-d521d281="" class="box-title">Pledge Record</div>
                             <div data-v-d521d281="" class="box-select">
-                                <div data-v-d521d281="" class="item"><span data-v-d521d281="" class="pla overflow1">All status</span><img data-v-d521d281="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt=""/></div>
-                                <div data-v-d521d281="" class="item"><span data-v-d521d281="" class="pla overflow1">Select time</span><img data-v-d521d281="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt=""/></div>
+                                <div data-v-d521d281="" class="item"><span data-v-d521d281="" class="pla overflow1"onClick={openPopup}>All status</span><img data-v-d521d281="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
+                                <div data-v-d521d281="" class="item"><span data-v-d521d281="" class="pla overflow1"onClick={openPopup}>Select time</span><img data-v-d521d281="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
                             </div>
                             <div data-v-d521d281="" class="cards-con">
                                 <div data-v-a998da64="" data-v-d521d281="" role="feed" class="van-list" aria-busy="false">
                                     <div data-v-9fdeb240="" data-v-d521d281="" class="record-list"></div>
-                                    
+
                                     <div class="van-list__finished-text">
                                         <div data-v-43ae51de="" data-v-a998da64="" class="empty">
                                             <div data-v-43ae51de="" class="van-empty custom-image">
-                                                <div class="van-empty__image" style={{width: '2rem',height: '2rem'}}><img src="./static/img1757786439045/empty-BkVz5juj.png"/></div>
+                                                <div class="van-empty__image" style={{ width: '2rem', height: '2rem' }}><img src="./static/img1757786439045/empty-BkVz5juj.png" /></div>
                                                 <p class="van-empty__description">No data yet</p>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    {isOpen && (
+                                        <>
+                                            <div class="van-overlay" role="button" tabindex="0" style={{ zIndex: '2010' }}></div>
+                                            <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style={{ zIndex: '2010' }}>
+                                                <div class="van-picker">
+                                                    <div class="van-picker__toolbar">
+                                                        <button type="button" class="van-picker__cancel van-haptics-feedback" onClick={closePopup}>Cancel</button>
+                                                        <div class="van-picker__title van-ellipsis">Select currency</div>
+                                                        <button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button>
+                                                    </div>
+                                                    <div class="van-picker__columns" style={{ height: '264px' }}>
+                                                        <div class="van-picker-column">
+                                                            <ul class="van-picker-column__wrapper" style={{ transform: 'translate3d(0px, 110px, 0px)', transitionDuration: '0ms', transitionProperty: 'none' }}>
+                                                                <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style={{ height: '44px' }}>
+                                                                    <div class="van-ellipsis">USDT</div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="van-picker__mask" style={{ backgroundSize: '100% 110px' }}></div>
+                                                        <div class="van-hairline-unset--top-bottom van-picker__frame" style={{ height: '44px' }}></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                     <div class="van-list__placeholder"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div data-v-6df70459="" data-v-72d7289a="" class="touch-move-con" style={{bottom: '1.3rem',right: '0.2rem'}}></div>
+                <div data-v-6df70459="" data-v-72d7289a="" class="touch-move-con" style={{ bottom: '1.3rem', right: '0.2rem' }}></div>
             </div>
-            
+
         </div>
     );
 };

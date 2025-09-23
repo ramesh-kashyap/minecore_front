@@ -22,7 +22,6 @@ import Smartrade from "./pages/home/Smartrade";
 
 import Deposit from "./pages/invest/Deposit";
 import History from "./pages/invest/History";
-import PledgeReload from "./pages/invest/PledgeReload";
 
 import WithdrawReq from "./pages/Withdraw/WithdrawReq";
 import Assets from "./pages/assets/Assets";
@@ -130,7 +129,6 @@ function AppContent() {
                 <Route path="/pledge-record" element={<PledgeRecord />} />
                 <Route path="/released-record" element={<ReleasedRecord />} />
                 <Route path="/task" element={<Task />} />
-                <Route path="/pledge-reload" element={<PledgeReload />} />
                 <Route path="/info" element={<Info />} />
                 <Route path="/bind-address" element={<BindAddress />} />
                 <Route path="/exchange-record" element={<ExchangeRecord />} />
