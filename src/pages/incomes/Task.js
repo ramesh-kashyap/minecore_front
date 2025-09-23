@@ -1,11 +1,18 @@
-import React from "react";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Task = () => {
- const back = (page) => {
-           navigate(-1);
-           };
-               const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [activeButton, setActiveButton] = useState(""); // Track active button
+
+  const back = () => {
+    navigate(-1);
+  };
+
+  const handleRewardClick = () => {
+    setActiveButton("reward");
+    navigate("/reward-details"); // navigate to reward page
+  };
            
     return (
         <div data-v-72d7289a="" data-v-418f83bb="" class="page task-page-out">
@@ -35,8 +42,21 @@ const Task = () => {
                                     </li>
                                 </ul>
                                 <div data-v-418f83bb="" class="btn-com">
-                                    <div data-v-418f83bb="" class="btn">One-click collection</div>
-                                    <div data-v-418f83bb="" class="btn">Reward details</div>
+                                     <div
+                    data-v-418f83bb=""
+                    className={`btn ${activeButton === "collect" ? "active" : ""}`}
+                    onClick={() => setActiveButton("collect")}
+                  >
+                    One-click collection
+                  </div>
+
+                  <div
+                    data-v-418f83bb=""
+                    className={`btn ${activeButton === "reward" ? "active" : ""}`}
+                    onClick={handleRewardClick}
+                  >
+                    Reward details
+                  </div>
                                 </div>
                             </div>
                             <div data-v-418f83bb="" class="task-list-con">
