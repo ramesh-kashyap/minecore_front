@@ -69,6 +69,7 @@ import RewardDetail from "./pages/incomes/RewardDetails";
 import Info from "./pages/profile/Info";
 import BindAddress from "./pages/profile/BindAddress";
 import P2P from "./pages/home/P2P";
+import ExchangeRecord from "./pages/team/ExchangeRecord";
 
 
 function AppContent() {
@@ -132,6 +133,7 @@ function AppContent() {
                 <Route path="/pledge-reload" element={<PledgeReload />} />
                 <Route path="/info" element={<Info />} />
                 <Route path="/bind-address" element={<BindAddress />} />
+                <Route path="/exchange-record" element={<ExchangeRecord />} />
 
                 <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
                 <Route path="/server" element={<ProtectedRoute><Server /></ProtectedRoute>} />
