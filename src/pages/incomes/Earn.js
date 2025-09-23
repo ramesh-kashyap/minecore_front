@@ -26,6 +26,9 @@ const Earn = () => {
        case 'task':
         navigate('/task');
         break;
+    case 'reward-details':
+        navigate('/reward-details');
+        break;
       case 'assets':
         navigate('/assets');
         break;
@@ -65,7 +68,7 @@ const Earn = () => {
                   <div data-v-4693b953="" className="title">Total revenue</div>
                   <div data-v-4693b953="" className="val">0 USDT</div>
                 </div>
-                <div data-v-4693b953="" className="right"><button data-v-4693b953="">Reward details</button></div>
+                <div data-v-4693b953="" className="right" onClick={() => handleNavigation('reward-details')}><button data-v-4693b953="">Reward details</button></div>
               </div>
               <div data-v-4693b953="" className="fuli">
                 <div data-v-4693b953="" className="cname">Popular Benefits</div>
