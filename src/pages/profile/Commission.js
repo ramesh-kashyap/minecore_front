@@ -4,6 +4,7 @@ import { useNavigate, Link, Outlet } from "react-router-dom";
 
 
 const Commission = () => {
+   
     const navigate = useNavigate(); // Hook for navigation
       
         const back = (page) => {
@@ -27,6 +28,7 @@ const Commission = () => {
     setConfirmedValue(selectedItem); // update with clicked value
     setIsOpen(false);
   };
+    const [activeTab, setActiveTab] = useState('run');
 
    return (
 
@@ -46,9 +48,13 @@ const Commission = () => {
                   <div className="van-pull-refresh__head"></div>
                   <div data-v-277f1458="" className="income">
                      <div data-v-277f1458="" className="box-ex">
-                        <div data-v-277f1458="" className="item active">Run Record</div>
-                        <div data-v-277f1458="" className="item">Income Record</div>
+                        
+                        <div data-v-277f1458=""  className={`item ${activeTab === 'run' ? 'active' : ''}`}
+          onClick={() => setActiveTab('run')}>Run Record</div>
+                        <div data-v-277f1458="" className={`item ${activeTab === 'income' ? 'active' : ''}`}
+          onClick={() => setActiveTab('income')}>Income Record</div>
                      </div>
+                      {activeTab === 'run' && (
                      <div data-v-b47ca8ab="" data-v-277f1458="" className="wrap">
                         <div data-v-b47ca8ab="" className="box">
                            <div data-v-b47ca8ab="" className="item">
@@ -83,7 +89,9 @@ const Commission = () => {
                            </div>
                         </div>
                      </div>
-                     <div data-v-b81d30cd="" data-v-277f1458="" className="wrap" style={{ display: "none" }}>
+                      )}
+                        {activeTab === 'income' && (
+                     <div data-v-b81d30cd="" data-v-277f1458="" className="wrap" >
                         <div data-v-b81d30cd="" className="box">
                            <div data-v-b81d30cd="" className="item">
                               <div data-v-b81d30cd="" className="text">Profits to be withdrawn</div>
@@ -132,7 +140,7 @@ const Commission = () => {
                               <div className="van-list__finished-text">
                                  <div data-v-43ae51de="" data-v-a998da64="" className="empty">
                                     <div data-v-43ae51de="" className="van-empty custom-image">
-                                       <div className="van-empty__image" style={{ width: "2rem", height: "2rem" }}><img src="/img1757786439045/empty-BkVz5juj.png" /></div>
+                                       <div className="van-empty__image" style={{ width: "2rem", height: "2rem" }}><img src="./static/img1757786439045/empty-BkVz5juj.png" /></div>
                                        <p className="van-empty__description">No data yet</p>
 
                                     </div>
@@ -143,6 +151,7 @@ const Commission = () => {
                            </div>
                         </div>
                      </div>
+                        )}
                   </div>
                </div>
             </div>

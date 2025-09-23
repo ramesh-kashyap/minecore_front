@@ -3,6 +3,24 @@ import { useNavigate, Link, Outlet } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import {
+   LineChart,
+   Line,
+   XAxis,
+   YAxis,
+   Tooltip,
+   CartesianGrid,
+   ResponsiveContainer,
+} from "recharts";
+
+const data = [
+   { time: "02:53", price: 0.132 },
+   { time: "03:10", price: 0.128 },
+   { time: "03:27", price: 0.134 },
+   { time: "03:44", price: 0.133 },
+   { time: "04:01", price: 0.129 },
+   { time: "04:18", price: 0.131 },
+];
 
 // import axios from "axios";
 // import Api from "../../Requests/Api";
@@ -280,8 +298,8 @@ const Dashboard = () => {
                               <div data-v-fee66994="" className="train">
 
                                  <div data-v-fee66994="" className="train-content">
-                                    <div data-v-fee66994="" className="li"onClick={() => handleNavigation('commission')}><span data-v-fee66994="">Today's earnings(MCE)</span><span data-v-fee66994="">0</span></div>
-                                    <div data-v-fee66994="" className="li"onClick={() => handleNavigation('commission')}><span data-v-fee66994="">Cumulative income(MCE)</span><span data-v-fee66994="">8</span></div>
+                                    <div data-v-fee66994="" className="li" onClick={() => handleNavigation('commission')}><span data-v-fee66994="">Today's earnings(MCE)</span><span data-v-fee66994="">0</span></div>
+                                    <div data-v-fee66994="" className="li" onClick={() => handleNavigation('commission')}><span data-v-fee66994="">Cumulative income(MCE)</span><span data-v-fee66994="">8</span></div>
                                  </div>
                               </div>
                               <div data-v-fee66994="" className="datamain">
@@ -327,29 +345,22 @@ const Dashboard = () => {
                                     position: "relative"
                                  }}
                                  >
-                                    <div style={{
-                                       position: "relative",
-                                       width: "443px",
-                                       height: "100px",
-                                       padding: "0px",
-                                       margin: "0px",
-                                       borderWidth: "0px"
-                                    }}
-                                    >
-                                       <canvas data-zr-dom-id="zr_0" width="664" height="150" style={{
-                                          position: "absolute",
-                                          left: "0px",
-                                          top: "0px",
-                                          width: "443px",
-                                          height: "100px",
-                                          userSelect: "none",
-                                          WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
-                                          padding: "0px",
-                                          margin: "0px",
-                                          borderWidth: "0px"
-                                       }}
-                                       ></canvas>
-                                    </div>
+                                    <ResponsiveContainer>
+                                       <LineChart data={data}>
+                                          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                          <XAxis dataKey="time" />
+                                          <YAxis domain={["auto", "auto"]} />
+                                          <Tooltip />
+                                          <Line
+                                             type="monotone"
+                                             dataKey="price"
+                                             stroke="#00c853"
+                                             strokeWidth={2}
+                                             dot={false}
+                                          />
+                                       </LineChart>
+                                    </ResponsiveContainer>
+
                                     <div className=""></div>
                                  </div>
                               </div>
