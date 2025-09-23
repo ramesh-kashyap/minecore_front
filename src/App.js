@@ -40,6 +40,8 @@ import Vip from "./pages/team/Vip";
 import Refer from "./pages/profile/Refer";
 import Kyc from "./pages/profile/Kyc";
 import Team from "./pages/team/Team";
+import GenerationData from "./pages/team/GenerationData";
+
 import Level from "./pages/profile/Level";
 import Setting from "./pages/profile/Setting";
 import RechargeCurrency from "./pages/assets/SelectRechargeCourency";
@@ -154,6 +156,7 @@ function AppContent() {
                 <Route path="/cash-carousel" element={<CashCarousel />} />
                 <Route path="/reward-details" element={<RewardDetail />} />
                 <Route path="/P2P" element={<P2P />} />
+                <Route path="/GenerationData" element={<GenerationData />} />
 
                 <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
                 <Route path="/deposit-history" element={<ProtectedRoute><History /></ProtectedRoute>} />
