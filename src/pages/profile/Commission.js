@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
-// import axios from "axios";
-// import Api from "../../Requests/Api";
-// import Collapse from 'react-collapse';
 
-
-// import { SlArrowRight } from "react-icons/sl";
-// import TradingChart from "./TradingChart";
-// import { jwtDecode } from 'jwt-decode';
-// import { useTranslation } from 'react-i18next';
-
-// const symbols = ["dogeusdt", "ethusdt", "dotusdt", "nearusdt"];
 
 
 const Commission = () => {
@@ -19,139 +9,24 @@ const Commission = () => {
         const back = (page) => {
         navigate(-1);
         };
-   // const [selectedSymbol, setSelectedSymbol] = useState(null);
-   // const navigate = useNavigate();
-   // const [user, setUser] = useState(null);
+  // State for popup
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [confirmedValue, setConfirmedValue] = useState(""); // For showing confirmed result
 
-   // const [isOpen, setIsOpen] = useState(true); // Modal visibility state
+  const openPopup = (item) => {
+    setSelectedItem(item); // store which one was clicked
+    setIsOpen(true);
+  };
 
-   // const closeModal = () => {
-   //    setIsOpen(false);
-   // };
+  const closePopup = () => {
+    setIsOpen(false);
+  };
 
-   // const handleAccept = () => {
-   //    console.log("Account connected with Telegram!");
-   //    setIsOpen(false); // Close the modal after accepting
-   // };
-   // const [cryptoData, setCryptoData] = useState({});
-   // const [binanceSymbols, setBinanceSymbols] = useState([]);
-   // const [showAll, setShowAll] = useState(false); // toggle state
-   // const toggleDropdown = () => setIsOpen(!isOpen);
-
-
-   // useEffect(() => {
-   //    const fetchCrypto = async () => {
-   //       try {
-   //          const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
-   //             params: {
-   //                vs_currency: "usd",
-   //                order: "market_cap_desc",
-   //                per_page: 20,
-   //                page: 1,
-   //                sparkline: false
-   //             }
-   //          });
-
-   //          const formatted = {};
-   //          const binanceSyms = [];
-
-   //          res.data.forEach((coin) => {
-   //             const symbol = `${coin.symbol}usdt`.toUpperCase();
-   //             formatted[symbol] = {
-   //                id: coin.id,
-   //                name: coin.name,
-   //                symbol: symbol,
-   //                image: coin.image,
-   //                price: coin.current_price,
-   //                change: coin.price_change_24h,
-   //                percent: coin.price_change_percentage_24h,
-   //                volume: (coin.total_volume / 1_000_000).toFixed(2) + "M"
-   //             };
-   //             binanceSyms.push(symbol.toLowerCase());
-   //          });
-
-   //          setCryptoData(formatted);
-   //          setBinanceSymbols(binanceSyms);
-   //       } catch (error) {
-   //          console.error("CoinGecko fetch error:", error);
-   //       }
-   //    };
-
-   //    fetchCrypto();
-   // }, []);
-
-   // useEffect(() => {
-   //    if (binanceSymbols.length === 0) return;
-
-   //    const ws = new WebSocket(
-   //       `wss://stream.binance.com:9443/stream?streams=${binanceSymbols
-   //          .map((s) => `${s}@ticker`)
-   //          .join("/")}`
-   //    );
-
-   //    ws.onmessage = (event) => {
-   //       const msg = JSON.parse(event.data);
-   //       const data = msg.data;
-
-   //       setCryptoData((prev) => {
-   //          const existing = prev[data.s];
-   //          if (!existing) return prev;
-
-   //          return {
-   //             ...prev,
-   //             [data.s]: {
-   //                ...existing,
-   //                price: parseFloat(data.c),
-   //                change: parseFloat(data.p),
-   //                percent: parseFloat(data.P),
-   //                volume: (parseFloat(data.v) / 1_000_000).toFixed(2) + "M"
-   //             }
-   //          };
-   //       });
-   //    };
-
-   //    return () => ws.close();
-   // }, [binanceSymbols]);
-
-   // const allCoins = Object.values(cryptoData);
-   // const coinsToShow = showAll ? allCoins : allCoins.slice(0, 5);
-   // const [loading, setLoading] = useState(true);
-   // const [availbal, setAvailableBal] = useState();
-
-
-
-   // const [userDetails, setUserDetails] = useState(null);
-   // const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
-
-   // useEffect(() => {
-   //    fetchUserDetails();
-   // }, []);
-
-   // const fetchUserDetails = async () => {
-   //    try {
-   //       const response = await Api.get('/user');
-   //       setUserDetails(response.data); // This should be your user object
-   //    } catch (error) {
-   //       console.error("Error fetching user details:", error);
-   //    }
-   // };
-   // // }, [token]);
-   // useEffect(() => {
-   //    withfatch();
-   // }, []);
-
-   // const withfatch = async () => {
-   //    try {
-   //       const response = await Api.get("/availbal");
-   //       if (response.data?.AvailBalance !== undefined) {
-   //          setAvailableBal(response.data.AvailBalance);
-   //       }
-   //    } catch (error) {
-   //       console.error("Error:", error);
-   //    }
-   // };
-
-   // const { t } = useTranslation();
+  const handleConfirm = () => {
+    setConfirmedValue(selectedItem); // update with clicked value
+    setIsOpen(false);
+  };
 
    return (
 
@@ -187,8 +62,8 @@ const Commission = () => {
                         </div>
                         <div data-v-b47ca8ab="" className="box-title">Run Record</div>
                         <div data-v-b47ca8ab="" className="box-select">
-                           <div data-v-b47ca8ab="" className="item"><span data-v-b47ca8ab="" className="overflow1">GPU 64-core computing power package</span><img data-v-b47ca8ab="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
-                           <div data-v-b47ca8ab="" className="item"><span data-v-b47ca8ab="" className="overflow1">2025-06</span><img data-v-b47ca8ab="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
+                           <div data-v-b47ca8ab="" className="item" onClick={() => openPopup("GPU 64-core computing power package")}><span data-v-b47ca8ab="" className="overflow1">GPU 64-core computing power package</span><img data-v-b47ca8ab="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
+                           <div data-v-b47ca8ab="" className="item" onClick={() => openPopup("2025-06")}><span data-v-b47ca8ab="" className="overflow1">2025-06</span><img data-v-b47ca8ab="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB2SURBVHgB7dM7FcAgEETRkYCElYKkSIiDxEGkIAUJSEgooEiRH+ySZu45079iFyAiIl1b3t64BQqkI6BO0MnlxY6ACCWSlxoDBIp8Q4SHgelDwAxD698BVbgJCBjk6mPUD/GJ4PwxwwMqX0ISjD7hLVdGRETmDonQcWG2MxsLAAAAAElFTkSuQmCC" alt="" /></div>
                         </div>
                         <div data-v-b47ca8ab="" className="cards-con">
                            <div data-v-a998da64="" data-v-b47ca8ab="" role="feed" className="van-list" aria-busy="false">
@@ -273,7 +148,31 @@ const Commission = () => {
             </div>
             <div data-v-6df70459="" data-v-72d7289a="" className="touch-move-con" style={{ bottom: "1.3rem", right: "0.2rem" }}></div>
          </div>
-
+ {isOpen && (
+          <>
+            <div class="van-overlay" role="button" tabindex="0" style={{ zIndex: '2010' }}></div>
+            <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style={{ zIndex: '2010' }}>
+              <div class="van-picker">
+                <div class="van-picker__toolbar">
+                  <button type="button" class="van-picker__cancel van-haptics-feedback" onClick={closePopup}>Cancel</button>
+                  <div class="van-picker__title van-ellipsis">Select currency</div>
+                  <button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button>
+                </div>
+                <div class="van-picker__columns" style={{ height: '264px' }}>
+                  <div class="van-picker-column">
+                    <ul class="van-picker-column__wrapper" style={{ transform: 'translate3d(0px, 110px, 0px)', transitionDuration: '0ms', transitionProperty: 'none' }}>
+                      <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style={{ height: '44px' }}>
+                        <div class="van-ellipsis">USDT</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="van-picker__mask" style={{ backgroundSize: '100% 110px' }}></div>
+                  <div class="van-hairline-unset--top-bottom van-picker__frame" style={{ height: '44px' }}></div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
    );
 
