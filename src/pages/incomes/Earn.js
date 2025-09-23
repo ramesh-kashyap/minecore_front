@@ -20,6 +20,12 @@ const Earn = () => {
       case 'trade':
         navigate('/trade');
         break;
+     case 'cash-carousel':
+        navigate('/cash-carousel');
+        break;
+       case 'task':
+        navigate('/task');
+        break;
       case 'assets':
         navigate('/assets');
         break;
@@ -48,7 +54,7 @@ const Earn = () => {
             <div className="van-pull-refresh__head"></div>
             <div data-v-4693b953="" className="container">
               <div data-v-4693b953="" className="banner">
-                <img data-v-4693b953="" src="/static/img1757786439045/banner-Drfxc-fz.png" alt="" />
+                <img data-v-4693b953="" src="./static/img1757786439045/banner-Drfxc-fz.png" alt="" />
                 <div data-v-4693b953="" className="abs">
                   <div data-v-4693b953="" className="title">Currency Earning Center</div>
                   <p data-v-4693b953="">Do tasks and earn benefits</p>
@@ -64,15 +70,15 @@ const Earn = () => {
               <div data-v-4693b953="" className="fuli">
                 <div data-v-4693b953="" className="cname">Popular Benefits</div>
                 <ul data-v-4693b953="">
-                  <li data-v-4693b953="">
-                    <div data-v-4693b953="" className="ico"><img data-v-4693b953="" src="/img1757786439045/ico-task-C3ehU6Fh.png" alt="" /></div>
+                  <li data-v-4693b953="" onClick={() => handleNavigation('task')}>
+                    <div data-v-4693b953="" className="ico" ><img data-v-4693b953="" src="./static/img1757786439045/ico-task-C3ehU6Fh.png" alt="" /></div>
                     <div data-v-4693b953="" className="flex1">
                       <div data-v-4693b953="" className="title">Task Center</div>
                       <p data-v-4693b953="">Make profits when doing tasks</p>
                     </div>
                   </li>
-                  <li data-v-4693b953="">
-                    <div data-v-4693b953="" className="ico"><img data-v-4693b953="" src="/img1757786439045/ico-lucky-S82ZvpGd.png" alt="" /></div>
+                  <li data-v-4693b953="" onClick={() => handleNavigation('cash-carousel')}>
+                    <div data-v-4693b953="" className="ico"><img data-v-4693b953="" src="./static/img1757786439045/ico-lucky-S82ZvpGd.png" alt="" /></div>
                     <div data-v-4693b953="" className="flex1">
                       <div data-v-4693b953="" className="title">Cash carousel</div>
                       <p data-v-4693b953="">Draw blind boxes and draw grand prizes</p>

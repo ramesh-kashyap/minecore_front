@@ -22,6 +22,7 @@ import Smartrade from "./pages/home/Smartrade";
 
 import Deposit from "./pages/invest/Deposit";
 import History from "./pages/invest/History";
+import PledgeReload from "./pages/invest/PledgeReload";
 
 import WithdrawReq from "./pages/Withdraw/WithdrawReq";
 import Assets from "./pages/assets/Assets";
@@ -63,6 +64,8 @@ import About from "./pages/profile/About";
 import PledgeRecord from './pages/assets/PledgeRecord';
 import ReleasedRecord from "./pages/assets/ReleasedRecord";
 import Task from "./pages/incomes/Task";
+import CashCarousel from "./pages/incomes/CashCarousel";
+import RewardDetail from "./pages/incomes/RewardDetails";
 import Info from "./pages/profile/Info";
 import BindAddress from "./pages/profile/BindAddress";
 import P2P from "./pages/home/P2P";
@@ -126,6 +129,7 @@ function AppContent() {
                 <Route path="/pledge-record" element={<PledgeRecord />} />
                 <Route path="/released-record" element={<ReleasedRecord />} />
                 <Route path="/task" element={<Task />} />
+                <Route path="/pledge-reload" element={<PledgeReload />} />
                 <Route path="/info" element={<Info />} />
                 <Route path="/bind-address" element={<BindAddress />} />
 
@@ -147,6 +151,8 @@ function AppContent() {
                 <Route path="/submit-recharge" element={<SubmitRecharge />} />
                 <Route path="/bill-record" element={<BillRecord />} />
                 <Route path="/bind-email" element={<BindEmail />} />
+                <Route path="/cash-carousel" element={<CashCarousel />} />
+                <Route path="/reward-details" element={<RewardDetail />} />
                 <Route path="/P2P" element={<P2P />} />
 
                 <Route path="/withdraw-req" element={<ProtectedRoute><WithdrawReq /></ProtectedRoute>} />
