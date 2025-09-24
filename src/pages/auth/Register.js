@@ -52,14 +52,16 @@ export default function Register() {
       }
    };
 
-
+   const back = () => {
+      navigate(-1);
+   };
    return (
-      <div id="app" data-v-app="">
+      <div>
          <div data-v-72d7289a="" data-v-7d2ee121="" class="page">
             <div data-v-72d7289a="" class="headers">
                <div data-v-293fd8ae="" data-v-7d2ee121="" class="user-header">
                   <div data-v-293fd8ae="" class="left">
-                     <div data-v-293fd8ae="" class="back"><img data-v-293fd8ae="" class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" /></div>
+                     <div data-v-293fd8ae="" class="back" onClick={back}><img data-v-293fd8ae="" class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" /></div>
                   </div>
 
                   <div data-v-293fd8ae="" class="right">
@@ -90,7 +92,7 @@ export default function Register() {
                                  <div data-v-a2e94f62="" class="inp">
 
 
-                                     <input data-v-a2e94f62=""
+                                    <input data-v-a2e94f62=""
 
                                        value={formData.sponsor}
                                        onChange={handleChange}
@@ -192,7 +194,7 @@ export default function Register() {
                               <div data-v-877e6773="" data-v-7d2ee121="" class="inp-con">
                                  <div data-v-877e6773="" class="inp">
                                     <input data-v-877e6773=""
-                                       type="password" 
+                                       type="password"
                                        value={formData.password}
                                        onChange={handleChange}
                                        name="password"
@@ -208,7 +210,7 @@ export default function Register() {
                               <div data-v-877e6773="" data-v-7d2ee121="" class="inp-con">
                                  <div data-v-877e6773="" class="inp">
                                     <input data-v-877e6773=""
-                                       type="password" 
+                                       type="password"
                                        name="password_confirmation"
 
                                        value={formData.password_confirmation}
@@ -251,7 +253,7 @@ export default function Register() {
                               </div>
                            </button>
                            <div data-v-7d2ee121="" class="bot-tips">Registering means that I agree to Minecore <span data-v-7d2ee121="">Service Agreement</span> and <span data-v-7d2ee121="">Privacy Policy</span></div>
-                           <p data-v-7d2ee121="">Already have an account？<span data-v-7d2ee121="">Log in now</span></p>
+                           <p data-v-7d2ee121="">Already have an account？<span data-v-7d2ee121=""><Link to="/login">Log in now</Link></span></p>
                         </div>
                      </div>
                   </div>
