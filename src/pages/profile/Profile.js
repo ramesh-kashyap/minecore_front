@@ -10,7 +10,12 @@ import Level from "../profile/Level";
 const Profile = () => {
 
   const navigate = useNavigate(); // Hook for navigation
-
+  const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem("authToken");
+     toast.success("Logged out successfully!");
+    navigate("/login");
+  };
   const back = (page) => {
     if (page === 'dashboard') {
       navigate('/dashboard');
@@ -181,7 +186,7 @@ const Profile = () => {
                 </>
               )}
 
-              <div data-v-32e9466d="" class="logout-btn">Logout</div>
+              <div data-v-32e9466d="" class="logout-btn" onClick={handleLogout}>Logout</div>
             </div>
           </div>
         </div>

@@ -3,12 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Api from "../../Requests/Api";
 const Login = () => {
- const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
- const handleLogin = async () => {
+  const handleLogin = async () => {
     try {
       setLoading(true);
       console.log("sagar");
@@ -30,13 +30,15 @@ const Login = () => {
       setLoading(false);
     }
   };
-
+const back = () => {
+    navigate(-1);
+  };
   return (
     <div data-v-72d7289a="" data-v-9c414265="" class="page">
       <div data-v-72d7289a="" class="headers">
         <div data-v-293fd8ae="" data-v-9c414265="" class="user-header">
           <div data-v-293fd8ae="" class="left">
-            <div data-v-293fd8ae="" class="back"><img data-v-293fd8ae="" class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" /></div>
+            <div data-v-293fd8ae="" class="back"onClick={back}><img data-v-293fd8ae="" class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" /></div>
           </div>
 
           <div data-v-293fd8ae="" class="right">
@@ -94,27 +96,26 @@ const Login = () => {
                       <div className="van-checkbox__icon van-checkbox__icon--square" style={{ fontSize: '0.32rem' }}><img data-v-2d8b0b61="" className="img-icon" src="./static/img1757786439045/download (2).png" /></div>
                       <span className="van-checkbox__label">Remember account</span>
                     </div>
-                    <div data-v-9c414265="" className="forgot">Forgot password？ </div>
+                    <div data-v-9c414265="" className="forgot"> <Link to="/forgot-password">Forgot password？</Link>  </div>
                   </div>
                 </div>
               </div>
               <div data-v-9c414265="" className="bot">
                 <button
-        data-v-34dc7cc4=""
-        data-v-9c414265=""
-        onClick={handleLogin}
-        className={`van-button van-button--default van-button--normal com-btn on ${
-          loading || !email || !password ? "van-button--disabled" : ""
-        }`}
-        disabled={loading || !email || !password}
-      >
-        <div className="van-button__content">
-          <span className="van-button__text">
-            {loading ? "Logging in..." : "Login"}
-          </span>
-        </div>
-      </button>
-                <p data-v-9c414265="">No account？<span data-v-9c414265="">Register now</span></p>
+                  data-v-34dc7cc4=""
+                  data-v-9c414265=""
+                  onClick={handleLogin}
+                  className={`van-button van-button--default van-button--normal com-btn on ${loading || !email || !password ? "van-button--disabled" : ""
+                    }`}
+                  disabled={loading || !email || !password}
+                >
+                  <div className="van-button__content">
+                    <span className="van-button__text">
+                      {loading ? "Logging in..." : "Login"}
+                    </span>
+                  </div>
+                </button>
+                <p data-v-9c414265="">No account？<span data-v-9c414265=""><Link to="/register">Register now</Link></span></p>
               </div>
             </div>
           </div>
