@@ -71,12 +71,7 @@ const back = () => {
                   <div data-v-9c414265="" className="title">Email</div>
                   <div data-v-a2e94f62="" className="inp-con">
                     <div data-v-a2e94f62="" className="inp">
-                      <div data-v-a2e94f62="" className="set_area">
-
-                        <i data-v-a2e94f62="" className="van-badge__wrapper van-icon van-icon-arrow-down icon">
-
-                        </i>
-                      </div>
+                 
                       <input data-v-a2e94f62="" type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Please enter your email address" />
                     </div>
                   </div>

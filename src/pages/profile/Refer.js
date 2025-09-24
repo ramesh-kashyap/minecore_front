@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-// import Api from "../../Requests/Api";
+import Api from "../../Requests/Api";
 // import { FaCopy } from 'react-icons/fa'; // Import the copy icon
 // import { toast } from "react-toastify";
 
@@ -15,40 +15,55 @@ const Refer = () => {
     const back = () => {
     navigate(-1); // Navigate to /about route
   };
-  // const [inviteLink, setInviteLink] = useState(null);
-  // const [username, setUsername] = useState(null);
-  // const [serR, setServerR] = useState(null);
-  // const [income, setIncome] = useState([]);
 
-  // const [error, setError] = useState("");
+    const [userDetails, setUserDetails] = useState(null);
 
-  // const fetchUsers = async () => {
-  //   try {
-  //     const response = await Api.get("Getinvate");
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
 
-  //     if (response.data && response.data.data && response.data.data.username) {
+  const fetchUserDetails = async () => {
+    try {
+      const response = await Api.get('/user');
+      setUserDetails(response.data); // This should be your user object
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
 
-  //       const fetchedUsername = response.data.data.username;
+  const [inviteLink, setInviteLink] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [serR, setServerR] = useState(null);
+  const [income, setIncome] = useState([]);
 
-  //       setUsername(fetchedUsername);
+  const [error, setError] = useState("");
 
-  //       // Construct the invite link with the username
-  //       const inviteLink = `${window.location.origin}=${response.data.data.username}`;
-  //       setInviteLink(inviteLink);
-  //     } else {
-  //       setInviteLink(null);
-  //     }
+  const fetchUsers = async () => {
+    try {
+      const response = await Api.get(`/getinvate`);
 
-  //     console.log(response.data);
-  //   } catch (err) {
-  //     setError(err.response?.data?.error || "Error fetching user data");
-  //   }
-  // };
+      if (response.data && response.data.data && response.data.data.username) {
 
-  // useEffect(() => {
-  //   fetchUsers();
-  //   fetchRef();
-  // }, []);
+        const fetchedUsername = response.data.data.username;
+
+        setUsername(fetchedUsername);
+
+        // Construct the invite link with the username
+        const inviteLink = `${window.location.origin}/register?${response.data.data.username}`;
+        setInviteLink(inviteLink);
+      } else {
+        setInviteLink(null);
+      }
+
+      console.log(response.data);
+    } catch (err) {
+      setError(err.response?.data?.error || "Error fetching user data");
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
 
   // const copyToClipboard = (text) => {
@@ -116,11 +131,11 @@ const Refer = () => {
               <div data-v-eb8627a1="" className="i-cen">
                 <div data-v-eb8627a1="" className="item">
                   <div data-v-eb8627a1="" className="item-title">Invitation link</div>
-                  <div data-v-eb8627a1="" className="line">https://getminecore.net/user/register/LE2JQRJ8 <img data-v-eb8627a1="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANRSURBVHgB7ZuBdaJAEIZH3xVAB0cqiKkgWEGug0sqMB2oFehVEOzgrECsQK4CSAVnB3Pzw+ojHkRlWVzYfO+Nq8BDZpid3Z3dHZBhmNmXIhC5F/GVeKoskorsVflHJIYMBoOUuoYoHYgsRBLWJxF5wz3JZuQBPZGpyF82RyLyzLlX2UFLip+C/1rc3BDyABNuV/FTEpFnahtYXmTD9pBwW97At3/rVeCZXskknNc725mSCThvirrC26V6DS65SG64k2JE3QKdqIdzFw3PXaCs2TXlwegaTyiF8/a96yyoDpxH+75Q2ToMKpT3pUC996gfYJD1UDawqooBG+qP8gC6lMaD/wzAedfSp/4RlFWFD1VAuT7evk8NEEURbbdbMsHT0xONRlc3TqgKd1IV9qVnucGe3m63Y9zSpGw2G67BrKjzsKC8L8UzNcR6vSbT1PQutG7H+PatcCIgQ4HP87w67lpKHMe03+9JA+iIWDDDj6IBzAwiBCgv7kpNMB6Ps9iiyYSUAbIqwHm+zSd38JTORw/4SRqURfviW0rTlObzOdWhZrS/hB8iUfaNNbK3bUf7IAiOx2ezGWuQQPehiv4+1cTiaH8OpPV8xIAuDnWbInDdACMY4J7cJasCPrnLdxigT8Pea/Fc9wD/bFK073wZgBwHBkjJXVIYQGtw3XH2rnvAOwzwTu4SIx8Qk+WEYXjMLyAl1iCZASKyHCRUIAaIh2q6KKUOgmyRBil0P6TEkNWYkKVIFiiTIo+Pj7qpsggfBwP8JssNMJ02nrRe4SPrCYorRORWfyBVOn/oCv8idzimqIsGWJIbXgAdo8OPowHUjOnVXoBgZBrNaH/KqrhQ4nR6HNkh5MuvyhKhc2IqPQ4Dn7YAGqQi40oDAM4XEdRbWGQ/L6J8WDxQtUYIM5kB9QtE/rvTg1UJkRfqV0CELuOyE6UGUHWk3mymncxrbb2RqrDk7jMjHeQGIXeX8Jx+X4ul6QLUjVbUHVaXKH814glaKxJaYkkmkT94ZVe3zBSMgNUVCdvDhm+xhY7zTYwJ34723vonRoA3LLn9jZOIR/ZM7StDmPYI+xQvg/PN0yE3t3kaHhaQAS7qCOnAeXAaKTlsoT+3fR6zVZgBiUxvn/8HCzQN1AEw0DwAAAAASUVORK5CYII=" alt="" /></div>
+                  <div data-v-eb8627a1="" className="line"> {inviteLink ? inviteLink : "Invite link not available"} <img data-v-eb8627a1="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANRSURBVHgB7ZuBdaJAEIZH3xVAB0cqiKkgWEGug0sqMB2oFehVEOzgrECsQK4CSAVnB3Pzw+ojHkRlWVzYfO+Nq8BDZpid3Z3dHZBhmNmXIhC5F/GVeKoskorsVflHJIYMBoOUuoYoHYgsRBLWJxF5wz3JZuQBPZGpyF82RyLyzLlX2UFLip+C/1rc3BDyABNuV/FTEpFnahtYXmTD9pBwW97At3/rVeCZXskknNc725mSCThvirrC26V6DS65SG64k2JE3QKdqIdzFw3PXaCs2TXlwegaTyiF8/a96yyoDpxH+75Q2ToMKpT3pUC996gfYJD1UDawqooBG+qP8gC6lMaD/wzAedfSp/4RlFWFD1VAuT7evk8NEEURbbdbMsHT0xONRlc3TqgKd1IV9qVnucGe3m63Y9zSpGw2G67BrKjzsKC8L8UzNcR6vSbT1PQutG7H+PatcCIgQ4HP87w67lpKHMe03+9JA+iIWDDDj6IBzAwiBCgv7kpNMB6Ps9iiyYSUAbIqwHm+zSd38JTORw/4SRqURfviW0rTlObzOdWhZrS/hB8iUfaNNbK3bUf7IAiOx2ezGWuQQPehiv4+1cTiaH8OpPV8xIAuDnWbInDdACMY4J7cJasCPrnLdxigT8Pea/Fc9wD/bFK073wZgBwHBkjJXVIYQGtw3XH2rnvAOwzwTu4SIx8Qk+WEYXjMLyAl1iCZASKyHCRUIAaIh2q6KKUOgmyRBil0P6TEkNWYkKVIFiiTIo+Pj7qpsggfBwP8JssNMJ02nrRe4SPrCYorRORWfyBVOn/oCv8idzimqIsGWJIbXgAdo8OPowHUjOnVXoBgZBrNaH/KqrhQ4nR6HNkh5MuvyhKhc2IqPQ4Dn7YAGqQi40oDAM4XEdRbWGQ/L6J8WDxQtUYIM5kB9QtE/rvTg1UJkRfqV0CELuOyE6UGUHWk3mymncxrbb2RqrDk7jMjHeQGIXeX8Jx+X4ul6QLUjVbUHVaXKH814glaKxJaYkkmkT94ZVe3zBSMgNUVCdvDhm+xhY7zTYwJ34723vonRoA3LLn9jZOIR/ZM7StDmPYI+xQvg/PN0yE3t3kaHhaQAS7qCOnAeXAaKTlsoT+3fR6zVZgBiUxvn/8HCzQN1AEw0DwAAAAASUVORK5CYII=" alt="" /></div>
                 </div>
                 <div data-v-eb8627a1="" className="item">
                   <div data-v-eb8627a1="" className="item-title">Invitation Code</div>
-                  <div data-v-eb8627a1="" className="line">LE2JQRJ8 <img data-v-eb8627a1="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANRSURBVHgB7ZuBdaJAEIZH3xVAB0cqiKkgWEGug0sqMB2oFehVEOzgrECsQK4CSAVnB3Pzw+ojHkRlWVzYfO+Nq8BDZpid3Z3dHZBhmNmXIhC5F/GVeKoskorsVflHJIYMBoOUuoYoHYgsRBLWJxF5wz3JZuQBPZGpyF82RyLyzLlX2UFLip+C/1rc3BDyABNuV/FTEpFnahtYXmTD9pBwW97At3/rVeCZXskknNc725mSCThvirrC26V6DS65SG64k2JE3QKdqIdzFw3PXaCs2TXlwegaTyiF8/a96yyoDpxH+75Q2ToMKpT3pUC996gfYJD1UDawqooBG+qP8gC6lMaD/wzAedfSp/4RlFWFD1VAuT7evk8NEEURbbdbMsHT0xONRlc3TqgKd1IV9qVnucGe3m63Y9zSpGw2G67BrKjzsKC8L8UzNcR6vSbT1PQutG7H+PatcCIgQ4HP87w67lpKHMe03+9JA+iIWDDDj6IBzAwiBCgv7kpNMB6Ps9iiyYSUAbIqwHm+zSd38JTORw/4SRqURfviW0rTlObzOdWhZrS/hB8iUfaNNbK3bUf7IAiOx2ezGWuQQPehiv4+1cTiaH8OpPV8xIAuDnWbInDdACMY4J7cJasCPrnLdxigT8Pea/Fc9wD/bFK073wZgBwHBkjJXVIYQGtw3XH2rnvAOwzwTu4SIx8Qk+WEYXjMLyAl1iCZASKyHCRUIAaIh2q6KKUOgmyRBil0P6TEkNWYkKVIFiiTIo+Pj7qpsggfBwP8JssNMJ02nrRe4SPrCYorRORWfyBVOn/oCv8idzimqIsGWJIbXgAdo8OPowHUjOnVXoBgZBrNaH/KqrhQ4nR6HNkh5MuvyhKhc2IqPQ4Dn7YAGqQi40oDAM4XEdRbWGQ/L6J8WDxQtUYIM5kB9QtE/rvTg1UJkRfqV0CELuOyE6UGUHWk3mymncxrbb2RqrDk7jMjHeQGIXeX8Jx+X4ul6QLUjVbUHVaXKH814glaKxJaYkkmkT94ZVe3zBSMgNUVCdvDhm+xhY7zTYwJ34723vonRoA3LLn9jZOIR/ZM7StDmPYI+xQvg/PN0yE3t3kaHhaQAS7qCOnAeXAaKTlsoT+3fR6zVZgBiUxvn/8HCzQN1AEw0DwAAAAASUVORK5CYII=" alt="" /></div>
+                  <div data-v-eb8627a1="" className="line">{userDetails?.username} <img data-v-eb8627a1="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANRSURBVHgB7ZuBdaJAEIZH3xVAB0cqiKkgWEGug0sqMB2oFehVEOzgrECsQK4CSAVnB3Pzw+ojHkRlWVzYfO+Nq8BDZpid3Z3dHZBhmNmXIhC5F/GVeKoskorsVflHJIYMBoOUuoYoHYgsRBLWJxF5wz3JZuQBPZGpyF82RyLyzLlX2UFLip+C/1rc3BDyABNuV/FTEpFnahtYXmTD9pBwW97At3/rVeCZXskknNc725mSCThvirrC26V6DS65SG64k2JE3QKdqIdzFw3PXaCs2TXlwegaTyiF8/a96yyoDpxH+75Q2ToMKpT3pUC996gfYJD1UDawqooBG+qP8gC6lMaD/wzAedfSp/4RlFWFD1VAuT7evk8NEEURbbdbMsHT0xONRlc3TqgKd1IV9qVnucGe3m63Y9zSpGw2G67BrKjzsKC8L8UzNcR6vSbT1PQutG7H+PatcCIgQ4HP87w67lpKHMe03+9JA+iIWDDDj6IBzAwiBCgv7kpNMB6Ps9iiyYSUAbIqwHm+zSd38JTORw/4SRqURfviW0rTlObzOdWhZrS/hB8iUfaNNbK3bUf7IAiOx2ezGWuQQPehiv4+1cTiaH8OpPV8xIAuDnWbInDdACMY4J7cJasCPrnLdxigT8Pea/Fc9wD/bFK073wZgBwHBkjJXVIYQGtw3XH2rnvAOwzwTu4SIx8Qk+WEYXjMLyAl1iCZASKyHCRUIAaIh2q6KKUOgmyRBil0P6TEkNWYkKVIFiiTIo+Pj7qpsggfBwP8JssNMJ02nrRe4SPrCYorRORWfyBVOn/oCv8idzimqIsGWJIbXgAdo8OPowHUjOnVXoBgZBrNaH/KqrhQ4nR6HNkh5MuvyhKhc2IqPQ4Dn7YAGqQi40oDAM4XEdRbWGQ/L6J8WDxQtUYIM5kB9QtE/rvTg1UJkRfqV0CELuOyE6UGUHWk3mymncxrbb2RqrDk7jMjHeQGIXeX8Jx+X4ul6QLUjVbUHVaXKH814glaKxJaYkkmkT94ZVe3zBSMgNUVCdvDhm+xhY7zTYwJ34723vonRoA3LLn9jZOIR/ZM7StDmPYI+xQvg/PN0yE3t3kaHhaQAS7qCOnAeXAaKTlsoT+3fR6zVZgBiUxvn/8HCzQN1AEw0DwAAAAASUVORK5CYII=" alt="" /></div>
                 </div>
               </div>
               <div data-v-eb8627a1="" className="i-bot">

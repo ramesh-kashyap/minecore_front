@@ -16,6 +16,22 @@ const Profile = () => {
      toast.success("Logged out successfully!");
     navigate("/login");
   };
+
+    const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
+
+  const fetchUserDetails = async () => {
+    try {
+      const response = await Api.get('/user');
+      setUserDetails(response.data); // This should be your user object
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
   const back = (page) => {
     if (page === 'dashboard') {
       navigate('/dashboard');
@@ -48,6 +64,16 @@ const Profile = () => {
 
   const openPopup = () => setIsOpen(true);
   const closePopup = () => setIsOpen(false);
+
+   const copyToClipboard = (text) => {
+    const dummyInput = document.createElement('input');
+    document.body.appendChild(dummyInput);
+    dummyInput.value = text;
+    dummyInput.select();
+    document.body.removeChild(dummyInput); // Remove the dummy input element
+    toast.success('copied!');
+  };
+
   return (
     <div data-v-72d7289a="" data-v-32e9466d="" class="page nobg">
       <div data-v-32e9466d="" class="bg"></div>
@@ -73,8 +99,11 @@ const Profile = () => {
                   </div>
                 </div>
                 <div data-v-17f2272d="" class="info" onClick={() => back('info')}>
-                  <div data-v-17f2272d="" class="name overflow1">Ashu123</div>
-                  <div data-v-17f2272d="" class="invite"> UID：<span data-v-17f2272d="">900129957</span><img data-v-17f2272d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADBSURBVHgB7ZbhDYMgEIWfpgN0BEdgg9INukFXYSQ30G7gKN2g5RJMSURKq8f5417yosAl9+U4kmuQlw3mUO895QKM94vZts0A3MAveyoMfOJLuX4QVfY8L0oBKPkV+2hA1FcthDVXwGLZ7Zfov/N2+E/H6PYo3xDtO7qCKt2+diDeAwqgAAqgAAqgAKUT0Vbd8ZkvDAQAuuCFpK+gr1WB0fuR2JtqAVBylzrQZygOQLLgH8vNWvImfCmAazwfg5N6A3XBXqvrQUFJAAAAAElFTkSuQmCC" /></div>
+                  <div data-v-17f2272d="" class="name overflow1">{userDetails?.name}</div>
+                  <div data-v-17f2272d="" class="invite"> UID：<span data-v-17f2272d="">{userDetails?.username}</span>
+                  <img data-v-17f2272d=""
+                  
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADBSURBVHgB7ZbhDYMgEIWfpgN0BEdgg9INukFXYSQ30G7gKN2g5RJMSURKq8f5417yosAl9+U4kmuQlw3mUO895QKM94vZts0A3MAveyoMfOJLuX4QVfY8L0oBKPkV+2hA1FcthDVXwGLZ7Zfov/N2+E/H6PYo3xDtO7qCKt2+diDeAwqgAAqgAAqgAKUT0Vbd8ZkvDAQAuuCFpK+gr1WB0fuR2JtqAVBylzrQZygOQLLgH8vNWvImfCmAazwfg5N6A3XBXqvrQUFJAAAAAElFTkSuQmCC" /></div>
                 </div>
               </div>
               <div data-v-7f2127ce="" data-v-32e9466d="" class="invite-level">
@@ -125,11 +154,11 @@ const Profile = () => {
                             <div data-v-32e9466d="">Fund password</div>
                             <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2"/>
                             </div> */}
-                <div data-v-32e9466d="" class="pel-item" onClick={() => back('bindEmail')}>
+                {/* <div data-v-32e9466d="" class="pel-item" onClick={() => back('bindEmail')}>
                   <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGtSURBVHgB7ZiBbcMgEEV/qw6QERghIzBKN7C7QTYIncDdxCOkG9gjdIMUGiwd1NiACcQRTzopVoz5nzP4dEClUqk8OlzGWcYg45opLjI6GQwbOGjh18Jx1lqCxV8AlBZPMzJr4mVe/5/rllyPMj5lfCMPRxkNzFdIyPjwGcxguv9CRAoTcNBzUy3cZ2BHBgwoI37iAPPwED6D6LvfojxKA13QVYJTdmc4TE0Gr9g5uzfwFnCv2lCN/q2O1B+kJdnzXXvgBHMzcaSDwzxtTtZ/yfcAk9Ej8jNPmMqVHhvrHoorA2oygf+f+dhscMwXiALmonAsZGCOtWPUNbFvNlxF4rAwX1IDk4iYbHD4rbo9JrmBNUF2NkJX3Z7jbgYmca5stDpCVz2rATrRnNCYVbefm8WAwpWN0FWncGQ0MMFwq+V7HWLDszgWDISUEiGMMt6RgVqNlqYaKE01UJqnNDCS30eUh2rw6gzSUkDVLY/U2Op8BnGYn+4O5VqLnaWF2Te5mrsqCw25HlG+uavm9+4U7qa9vmZCACgtPqYEN2C4lcY5MzJgWwleqVQqmfgFTtKSbDMWzdEAAAAASUVORK5CYII=" alt="" class="img1" />
                   <div data-v-32e9466d="">Bind email</div>
                   <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFMSURBVHgBtVTLbYQwFMRWDnCjBEpIOlgu/E5JB0kHSwVsKoBU4pz4nEgHuyWQDsgFiQtk3gqQtTKsUZSREPaTZ3iesTGMP4KpikVROIyxhHN+8TzvY0uAK1UZS/F6HYYhq6oq3S0wjuOPND6WZXncJWCaJhEaqZRiWwdtAdd1W3zZxVbaZSHngrzREiCEYdjAg5d5DkEbgrUQwtYSmES+IBJLJceyLKEtQIiiKMNLjvIgJ8MMTSCJmshSKQ6CINMWqOva7vv+jKEz165GGztAKSCNMxlKc0rprgdbgFCr3cF0P8gHZ66hmyftDkAWMhmIcdEuWgJTbI/zHK2/UwJXYQ1yAsJJ6uTT9/3lhG52kOf5s0wGmq7r3uQ1qx3cRkZkyp3uyF2BNcfJtNu1a3+kxFA4rlq75sFyZWXHVXhQFUGK8XzTUcWeT8Z/4hdg/ZU7L+bCYQAAAABJRU5ErkJggg==" alt="" class="img2" />
-                </div>
+                </div> */}
                 <div data-v-32e9466d="" class="pel-item" onClick={() => back('ChangePassword')}>
                   <img data-v-32e9466d="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKQSURBVHgB7VntkdMwEH0w/MdXAdvBhQpQCVeCqYCjglMHCRXEVAAdmA4CFdhUQKgApLE8Wa9lRfZFShj8Zt5EtqTVar0fsQysWPF/4wWuj8LwybB01y3jT8Pvhkf3e3Mgw4PhnwjWPgE5nwAZfjD8jc661qpbdz8WbyGexCvkwxfDTaD/s2Hlxli3uke3OT7Htq/mSg2m3UMH5nEXe5SdL5EPR9Hu+R7hDfxg7XvZmXMDXBHrLneO1Zl5LWvfyc5cGyDDd+I6Fi1rZ3kChHFqbDBUek4gtkJ2cmiE87meIYswDP4GGaCRRvm58xdDswWtKynHzQwZhCspDww3UGM+CJmVJ5yCSxn+wvINEDIorwz3CFfWm/T5EnFKT5b9AAgJlSd0rhCruHUhhXgQEivvs7rdkLXwBqcYUOzec+RrXAjkEV5jnnXnyte4IOqEwgkZAvafVR5igUNgnH1zUo4FzoOQKc/zBcgzxirry0zbgFxCpgq7Q7iSFgjXg3pCrvyLrZEI3LK+YrTFOO/HFLGK9X9FQnCFlKefW79y9whDCzeeeY+Ii6tng1tSiT4S/bxoPYg+iRLhDS7C3FfKo7guJtpHZILvYKvFKfOQ6OvPKHvL7w0/Gb7G0O9977yFWCMZ7Ala/6h3nn7pKj7SGbl7JAQPNhvQvgKlMf1PtPSMJzGuREIUiMvXhC4LHRx3mD72eMJ5o1wUlViQsBwbDA2S1H16EIb1oMGyTRDG5zqETOCxsGRxhXGVfkBmaIwD1boABeYoN0bO00iAmC80Gl0QSthc/w3dFxeLN+iUJ8/Yj/Cn5GwoMe9Egrudwo2A0D2NmI00bmzydBnjQj4odOmx/47Vf22xHzF611qxYkUG/AWqNoEc4/NS/QAAAABJRU5ErkJggg==" alt="" class="img1" />
                   <div data-v-32e9466d="">Login password</div>

@@ -11,6 +11,7 @@ export default function Register() {
       sponsor: "",
       name: "",
       email: "",
+      otp: "",
       // phone: "",
       password: "",
       password_confirmation: "",
@@ -39,7 +40,7 @@ export default function Register() {
             sponsor: formData.sponsor,
             name: formData.name,
             email: formData.email,
-            // phone: formData.phone,
+            otp: formData.otp,
             password: formData.password,
             // countryCode: formData.countryCode,
          });
@@ -49,6 +50,24 @@ export default function Register() {
          }
       } catch (err) {
          toast.error(err.response?.data?.error || "Registration failed");
+      }
+   };
+
+   const handleSendRequest = async () => {
+      try {
+
+         const response = await Api.post('/sendRegisterOtp', {
+            email: formData.email.trim()
+         });
+
+         if (response?.data?.success) {
+            toast.success("OTP sent successfully!");
+         } else {
+            toast.error(response?.data?.message || "Failed to send OTP!");
+         }
+      } catch (error) {
+         console.error('Error sending OTP:', error);
+         toast.error(error?.response?.data?.message || "Failed to send OTP!");
       }
    };
 
@@ -140,13 +159,47 @@ export default function Register() {
 
                                        value={formData.email}
                                        onChange={handleChange}
-                                       type="text"
+                                       type="email"
                                        name="email"
+                                       
                                        placeholder="Please enter your email"
 
                                     />
                                  </div>
                               </div>
+
+                           </div>
+                           <div data-v-7d2ee121="" class="box-item">
+
+                              <div data-v-7d2ee121="" class="title">Verification Code</div>
+
+                              <div data-v-a2e94f62="" class="inp-con">
+
+                                 <div data-v-a2e94f62="" class="inp">
+
+
+                                    <input data-v-a2e94f62=""
+
+                                       value={formData.otp}
+                                       onChange={handleChange}
+                                       type="text"
+                                       name="otp"
+                                       placeholder="Please enter your verification code"
+
+                                    />
+                                 </div>
+                                 <button onClick={handleSendRequest}
+                                    style={{
+                                       background: '#000000ff',
+                                       color: '#fff',
+                                       border: 'none',
+                                       borderRadius: '6px',
+                                       cursor: 'pointer',
+                                       transition: '0.3s',
+                                    }}
+                                 >
+                                    Send
+                                 </button>                              </div>
 
                            </div>
                            {/* <div data-v-7d2ee121="" class="box-item">
@@ -201,7 +254,7 @@ export default function Register() {
                                        placeholder="Enter your password"
                                        required
                                     />
-                                    <div data-v-877e6773="" class="icon"> 　<img data-v-877e6773="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAhxSURBVHgB7Zx/bhNHFMffm01poC3yDWpO0HCCJKoECUg4JglV/sKcgHACkhMQThDnr0pAsjEShFBVCSfAnAD3BgZEIxJ7pu+tcQj2zo8d765B3c8f/PCu17Nfv5n3a9YABQUFBQVGwjAsQUEswnbCdmNvTYrJt4/CZ1NQMASaDrJ4dMr93v9Uuyvl7K3q9SYUnKIV8Gvx+hQiDhIrYLx4fQoRzzIkYBjulZUQrxUog+MoROwTa4Fh+HJKCXWQtYjs3TswOTUhgt+kkmVyaWVQ0HdW5YHTWwqgTSNuo4SmQNHqyO6b5er8IYwR7RqYlYhs4VJADRGnQeGU+fpuKITDQIldkN1GtTrfghwxeuE0RfyThPsxwE2lYAYyhKy0KQA3UMpXeYiJthPSFDFs7N+XoNYgLxTUhVLrWQppFZD5rkVkMhTSSUDmexeRbrRFf67drFzdghRxFpDJScQWKva42OZrfR5kOboyRn+XYQQih9NVd9KyxkQCMqmLqFRZIR6en5g4vH7993/AcQwn0J0KAvbkkVMqQwLYGk+kvPdH9doujEhiAZm84kRXdp6+nFYga0nFpBmwvlyZX4MR8BKQYRGlkK/NZ+WfsTwK92qBiNLQstMbFG4sLly9B55Yy1k6uqK7aj8LS4EQB3mWwm5V5+uLlblLXanuQOQ4LKBa3X76YhM88RLwSWOvjoC33c7OX0SGhTyWapbmWN16soKar4iJp7C5UmNifAUI12ntsyYmEtBfvD7jE5FTyXMCD8C2NpJ3Xqxe2wBHEgXSNqdBee6hQFuBYHwihuFBSYljjh6My4mkqe9a5XFM5bhGiPTBhm+P1prFG3N3sgi2ab1tS1RNLmN1lHw1avxmW8M5Tnwnjy5TtN22XMrNicgA75vE4wrI++5RFApUq1foRnEWo0xCO0Qnx1KtXF2nysoafxnIMR7C6oQQ4U7jxdvHtJzwFwseBHJylcbXNNxP+SJecFqqrBb4JNxfQKFCwykt9nYrA6lRHmnfKPktT2cpPvGSVNad4zKVrRYohHqgP4rtOPGYLCxx8HW2FPqC6tu7+w8gIdXqbDR20/jIc1tDG6OA2+T+zVNXra0YkvI8ROxdwi8Y5rF3sbuuO873vh0+NyYMRgFRGEIWqrEtVeYegoXcRORg2MMSl29c20Cq0GhPIA02DTsztALarO+YCpTgSK6WaLGYOD5ReUs/Niz9Is5rPbZWQJv1rSSup3VP63t6UhDRYjFx8L2QQ9IHzwgLukOxAj4O92bSsr4+3IlTThWSUUXE0kVx4S4kHuC5hzor5BCKNYk7FiugCAyFAi/r4y/RtfgQnT2iiHI1qRWyVzZZIWVYldjX415EQ+vRx/o4lnSzvq9GMYKIWPqZGvaQkBPZaWgPoqrFvTwkoGn6cq7rZX2BqoAX/iLqLMYEB/R6j4yluGk8JKAQYhp0INbBAzRYX0fKahbemZpSM+AB8g4HDXHaDAmIqGZAAzViXoEPCmNvni2aCwNZhDiIsgw+yK52GqsYbUTMWbpBtlY8W4G6fBh5sxBkFSdiIidy+v7ePbbijqEaLoN590RS4lSw3IJtB5JUmYcFpLqb5tzys2d//woe6EShdeorIdIWETyIap9aJzpcAhteAxUegoajzok2IrfQinuR1tupwXgtTRF9kKAP4RCHtRkSsGNyFIaUxgQ7C92xuKxhnCKiIYlwEpALiKaUxmfAUsmG4Whs1jAOEaPpq08iWjdvXBkyrlgnQhepg4YAgwQpWY8JmGwaqx3B+diKd94icutCe1Azi2IFNFoMpTRp55ls2VQQDeN6HHmJGH021RS1nyBEPe71WAGjaWxIadKudkQoWODO305j//agkCwi9U6qYGQ0EY3Wp5m+0afq3hE2Xt6VIDVWo9pCwuWke+weP32+KpRwqhpzp4++xBa5xbZCmKKBOgrju/Ed32qvCFhb0jSu9IG0/GHLtG51A3vDZRAun/NuKJdzI8HIKukfNXfxemNLaok261sydP20AvK6ZWq4ROuWR/mct5JRape4DZkMdxGjCoth7VOWjMaatWxTExu01RS/qRxdlxtA1MOATBl9uzFvlTO915oLy94+Ow1Y4oV/0+N5YrZE5z18+s9vZ5k7U1Zi/YKtAkadecO6xXkjda28RDzdw9e7fsv9nSwarr2X/17KrABBsfByZa4BtpGAAy7bIPqbi2AEdhp/VRR2F1ACbzynG+6XwbBNwT11ztQhxWO777of35zd+JPBNpKabsfFIM6VG15sRW9/nX6IFHp8kEezLrua0ibtx9Jca5+JNli6xHG84Qfp28v7oT9mHE8PJCqochxnK1RGG34+ZxSQM+MoQCSywD7Om8xzeNgvjjwt0aukv1SZrzkFw5RFjMMa2RKVdXd+OpboZYF9kgTDWT3sd5bo923ET7cV1RjdG/mjWeJIAjJJn7xkIblCLZXaSutx/ShCoEY6VYxrfk/A+4s4soDM523A7J3LSd7XF5NL5R3ZeeN6A71pJ6YCxGl670IaPxvgK2IqAjIpPtLfUtjLSiigjv5WvR+jKNFgWagyZEZyEVMTsE/ih/1yg0Ibper2aZ5MxNQb64meUcuFL3nz4sLcvbTjxNQt8CzR41VcrDTU27IjEmmDhHs4mFqmGSdmKmAfFjKghrVAcZeb6ZAhUQ8axe4H+XHLlJOnJWIuAp6FxfxBBBWh5AI5ixkYGa7UqCZ78smJibrrzwYwaYiYu4CD8OP6UlHTSMky9z4krUFkpXHethX9Ge1PUdRoEk2B0BwsbSVlVBHHLuC3gKuIx9S+GCxzjXt72zeBWxVHbMTVCAsLPIPeEnFtUbNdrhBwgGER9eJFR6FgiC8iwsai50bN/z2bxU8/FxQUFFj5D1k2CBHwh95mAAAAAElFTkSuQmCC" /></div>
+ 
                                  </div>
                               </div>
                            </div>
@@ -219,7 +272,6 @@ export default function Register() {
                                        required
                                        placeholder="Please enter confirm password"
                                     />
-                                    <div data-v-877e6773="" class="icon"> 　<img data-v-877e6773="" src="data:image/png;base64,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" /></div>
                                  </div>
                               </div>
                            </div>
