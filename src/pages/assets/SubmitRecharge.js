@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate,Link } from 'react-router-dom'; // Import Link for navigation
 import Api from '../../Requests/Api';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SubmitRecharge = () => {
+ const navigate = useNavigate(); // Hook for navigation
+      
+        const back = (page) => {
+        navigate(-1);
+        };
 
+ const location = useLocation();
+const currency = location.state?.currency;
+
+  if (!currency) {
+    navigate("/recharge-currency");
+    return null;
+  }
 
 
     return (
@@ -11,7 +23,7 @@ const SubmitRecharge = () => {
    <div data-v-72d7289a="" class="headers">
       <div data-v-7401f0fe="" data-v-72d7289a="" class="inside-header">
          <div data-v-7401f0fe="" class="left">
-            <div data-v-7401f0fe="" class="back"><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" class="icon"/></div>
+            <div data-v-7401f0fe="" class="back" onClick={back}><img data-v-7401f0fe="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFbSURBVHgB7dfRTQJRFIThiTbgo+XYipXsdEItVmALluGbLglEElndhN175l7+LznhBRLyD4QgAQAAAAAAAAAAAAs830Eo4fm+TscIjVk/8RmhMet3fEZoxFqOzwg7s/6Pf75J2JS1Pv77fE/CZizil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlLOKXsYhfxiJ+GYv4ZSzil7GIX8YifhmL+GUs4pexiF/GIn4Zi/hlrPXxR7kYVl/hhhrA6ivaUANYfQWLGuBBt4v4FNy7SX19amO+AVua1Fe44QY4mtRXvOEGOJq0/s3zR2wnjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQgBGCMAIARghACMEYIQAjBCAEQIwQoChR3hUvrfT48uK5z7P93nxGmxozTfhIOzqrxGI38i1EYjf2OUIXcfv4Uf4mvOP7Md8rwIAAAAAAAAAAACWfANcjc2WX+Z5VgAAAABJRU5ErkJggg==" class="icon"/></div>
          </div>
          <div data-v-7401f0fe="" class="title overflow1">TRXStored Value</div>
          <div data-v-7401f0fe="" class="right">
@@ -37,10 +49,10 @@ const SubmitRecharge = () => {
                      <div data-v-9c0d4d50="" class="inp input-con">
                         <div data-v-0bf4a1a6="" data-v-9c0d4d50="" class="com-image img">
                            <div data-v-0bf4a1a6="" class="van-image image">
-                              <img src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/4bd3122ec5f26eee8157b3a93b7ae000.png" class="van-image__img" style={{objectFit: "cover"}}/>
+                              <img src={currency.img} class="van-image__img" style={{objectFit: "cover"}}/>
                            </div>
                         </div>
-                        <span data-v-9c0d4d50="">TRX</span>
+                        <span data-v-9c0d4d50="">{currency.name}</span>
                      </div>
                   </div>
                </div>
