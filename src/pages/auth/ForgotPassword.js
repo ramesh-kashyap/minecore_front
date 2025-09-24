@@ -17,7 +17,7 @@ const ForgotPassword = () => {
   const handleSendRequest = async () => {
     try {
       const response = await Api.post('/sendForgotOtp', {
-        email: email.trim() // Make sure 'email' state variable exists
+        email: email.trim()
       });
 
       if (response?.data?.success) {
@@ -116,7 +116,18 @@ const ForgotPassword = () => {
                     onChange={(e) => setVerification_code(e.target.value)}
                     placeholder="Please enter your verification code" />
                 </div>
-                <button onClick={handleSendRequest}>send</button>
+                <button onClick={handleSendRequest}
+                  style={{
+                    background: '#000000ff',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    transition: '0.3s',
+                  }}
+                >
+                  Send
+                </button>
               </div>
 
             </div>
