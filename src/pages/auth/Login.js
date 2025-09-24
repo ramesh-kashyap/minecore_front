@@ -1,12 +1,35 @@
 import React, { useState } from "react";
-
 import { useNavigate, Link } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Api from "../../Requests/Api";
 const Login = () => {
+ const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
+ const handleLogin = async () => {
+    try {
+      setLoading(true);
+      console.log("sagar");
+      const response = await Api.post("/login", {
+        email,
+        password,
+      });
 
-
+      if (response.data.status) {
+        toast.success(response.data.message);
+        localStorage.setItem("token", response.data.token);
+        navigate("/dashboard"); // dashboard ya home page
+      } else {
+        toast.error(response.data.error || "Login failed!");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Server error!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div data-v-72d7289a="" data-v-9c414265="" class="page">
@@ -27,7 +50,7 @@ const Login = () => {
         <div data-v-72d7289a="" className="scroll" id="pageScroll">
           <div data-v-9c414265="" className="user">
             <div data-v-9c414265="" className="welcome-text">
-              <img data-v-9c414265="" src="" alt="" />
+              <img data-v-9c414265="" src="./static/img1757786439045/download.png" alt="" />
               <div data-v-9c414265="" className="box">
                 <h2 data-v-9c414265="">Hello</h2>
                 <p data-v-9c414265="">Welcome to Minecore</p>
@@ -43,7 +66,7 @@ const Login = () => {
                   </div>
                 </div>
                 <div data-v-9c414265="" className="item">
-                  <div data-v-9c414265="" className="title">Mobile phone number</div>
+                  <div data-v-9c414265="" className="title">Email</div>
                   <div data-v-a2e94f62="" className="inp-con">
                     <div data-v-a2e94f62="" className="inp">
                       <div data-v-a2e94f62="" className="set_area">
@@ -52,7 +75,7 @@ const Login = () => {
 
                         </i>
                       </div>
-                      <input data-v-a2e94f62="" type="text" placeholder="Please enter your mobile phone number" />
+                      <input data-v-a2e94f62="" type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Please enter your email address" />
                     </div>
                   </div>
 
@@ -61,14 +84,14 @@ const Login = () => {
                   <div data-v-9c414265="" className="title">password</div>
                   <div data-v-877e6773="" data-v-9c414265="" className="inp-con">
                     <div data-v-877e6773="" className="inp">
-                      <input data-v-877e6773="" type="password" maxlength="100" placeholder="Please enter password" />
+                      <input data-v-877e6773="" type="password" value={password} onChange={(e) => setPassword(e.target.value)} maxlength="100" placeholder="Please enter password" />
                       <div data-v-877e6773="" className="icon">
-                        <img data-v-877e6773="" src="./static/img1757786439045/bg.png" /></div>
+                        <img data-v-877e6773="" src="./static/img1757786439045/download (1).png" /></div>
                     </div>
                   </div>
                   <div data-v-9c414265="" className="save-forgot">
                     <div data-v-2d8b0b61="" data-v-9c414265="" role="checkbox" className="van-checkbox" tabindex="0" aria-checked="false">
-                      <div className="van-checkbox__icon van-checkbox__icon--square" style={{ fontSize: '0.32rem' }}><img data-v-2d8b0b61="" className="img-icon" src="" /></div>
+                      <div className="van-checkbox__icon van-checkbox__icon--square" style={{ fontSize: '0.32rem' }}><img data-v-2d8b0b61="" className="img-icon" src="./static/img1757786439045/download (2).png" /></div>
                       <span className="van-checkbox__label">Remember account</span>
                     </div>
                     <div data-v-9c414265="" className="forgot">Forgot password？ </div>
@@ -76,11 +99,21 @@ const Login = () => {
                 </div>
               </div>
               <div data-v-9c414265="" className="bot">
-                <button data-v-34dc7cc4="" data-v-9c414265="" type="button" className="van-button van-button--default van-button--normal van-button--disabled com-btn on" disabled="">
-                  <div className="van-button__content">
-                    <span className="van-button__text">Login</span>
-                  </div>
-                </button>
+                <button
+        data-v-34dc7cc4=""
+        data-v-9c414265=""
+        onClick={handleLogin}
+        className={`van-button van-button--default van-button--normal com-btn on ${
+          loading || !email || !password ? "van-button--disabled" : ""
+        }`}
+        disabled={loading || !email || !password}
+      >
+        <div className="van-button__content">
+          <span className="van-button__text">
+            {loading ? "Logging in..." : "Login"}
+          </span>
+        </div>
+      </button>
                 <p data-v-9c414265="">No account？<span data-v-9c414265="">Register now</span></p>
               </div>
             </div>

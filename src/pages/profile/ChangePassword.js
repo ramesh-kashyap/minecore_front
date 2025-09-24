@@ -10,57 +10,57 @@ const ChangePassword = () => {
            const back = (page) => {
            navigate(-1);
            };
-   // const [email, setEmail] = useState("");
-   // const [password, setPassword] = useState('');
-   // const [passwordConfirmation, setPasswordConfirmation] = useState('');
-   // const [verificationCode, setVerificationCode] = useState('');
-   // const [message, setMessage] = useState('');
-   // const [error, setError] = useState('');
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState('');
+   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+   const [verificationCode, setVerificationCode] = useState('');
+   const [message, setMessage] = useState('');
+   const [error, setError] = useState('');
 
-   // const handleChangePassword = async () => {
-   //    if (password !== passwordConfirmation) {
-   //       toast.error("Passwords do not match!");
-   //       return;
-   //    }
+   const handleChangePassword = async () => {
+      if (password !== passwordConfirmation) {
+         toast.error("Passwords do not match!");
+         return;
+      }
 
-   //    try {
-   //       const response = await Api.post('/changePassword', {
-   //          password,
-   //          password_confirmation: passwordConfirmation,
-   //          verification_code: verificationCode
-   //       });
+      try {
+         const response = await Api.post('/changePassword', {
+            password,
+            password_confirmation: passwordConfirmation,
+            verification_code: verificationCode
+         });
 
-   //       if (response.data.success) {
-   //          toast.success(response.data.message);
-   //          setPassword('');
-   //          setPasswordConfirmation('');
-   //          setVerificationCode('');
-   //       } else {
-   //          toast.error(response.data.message || 'Something went wrong.');
-   //       }
-   //    } catch (err) {
-   //       console.error('Error:', err.response);
-   //       toast.error(err.response?.data?.message || "Server error");
-   //    }
-   // };
+         if (response.data.success) {
+            toast.success(response.data.message);
+            setPassword('');
+            setPasswordConfirmation('');
+            setVerificationCode('');
+         } else {
+            toast.error(response.data.message || 'Something went wrong.');
+         }
+      } catch (err) {
+         console.error('Error:', err.response);
+         toast.error(err.response?.data?.message || "Server error");
+      }
+   };
 
 
-   // const handleSendRequest = async () => {
-   //    try {
-   //       const response = await Api.post('/sendotp');
-   //       console.log(response);
-   //       if (response?.data?.success) {
-   //          console.log('OTP sent successfully:', response.data);
-   //          toast.success("OTP sent successfully!");
-   //       } else {
-   //          console.warn('Failed to send OTP:', response.data.message);
-   //          toast.error(response?.data?.message || "Failed to send OTP!");
-   //       }
-   //    } catch (error) {
-   //       console.error('Error sending OTP:', error);
-   //       toast.error(error?.response?.data?.message || "Failed to send OTP!");
-   //    }
-   // };
+   const handleSendRequest = async () => {
+      try {
+         const response = await Api.post('/sendotp');
+         console.log(response);
+         if (response?.data?.success) {
+            console.log('OTP sent successfully:', response.data);
+            toast.success("OTP sent successfully!");
+         } else {
+            console.warn('Failed to send OTP:', response.data.message);
+            toast.error(response?.data?.message || "Failed to send OTP!");
+         }
+      } catch (error) {
+         console.error('Error sending OTP:', error);
+         toast.error(error?.response?.data?.message || "Failed to send OTP!");
+      }
+   };
    return (
     
 
