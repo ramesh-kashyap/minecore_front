@@ -36,6 +36,10 @@ code {
   background-color: transparent;
   margin-right: 5px;
   border: none;
+  position: inherit;
+  top: 10px;
+  left: 10px;
+  
 }
 
 .react-international-phone-country-selector-button:hover {
@@ -48,7 +52,15 @@ code {
 .react-international-phone-input-container .react-international-phone-input {
   background-color: #ccc0;
   width:50px;
-  color:#fff;
+  color:#1f1f1f;
   border:none
 }
 
+.react-international-phone-country-selector-button {
+  background-color: transparent;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer; /* Important */
+  position: relative;
+  z-index: 10;
+}
