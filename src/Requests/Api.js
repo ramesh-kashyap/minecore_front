@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Api = axios.create({
-  baseURL: 'http://localhost:5000/api/auth', // ✅ Base path only
+  baseURL: 'http://localhost:3002/api/auth', // ✅ Base path only
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,7 +11,7 @@ const Api = axios.create({
 
 Api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
