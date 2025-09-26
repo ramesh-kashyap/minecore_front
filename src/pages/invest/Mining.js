@@ -1,11 +1,113 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
+import Api from "../../Requests/Api";
+
 
 
 const Mining = () => {
-    const navigate = useNavigate();
+  const [availbal, setAvailableBal] = useState();
+const [vip, setVip] = useState(0);
+const [incomes, setIncomes] = useState("");
+const [error, setError] = useState("");
+ const navigate = useNavigate();
  const [showPopup, setShowPopup] = useState(false); // 👈 popup state
+
+// Active VIP ko track karne ke liye
+  const [activeVip, setActiveVip] = useState(0);
+   useEffect(() => {
+      fetchvip();
+      IncomeInfo();
+   }, [])
+    const IncomeInfo = async () => {
+      try {
+         const response = await Api.get("/incomeInfo");
+         if (response.data) {
+            console.log(response.data);
+            setIncomes(response.data.data);
+         }
+      } catch (error) {
+         console.error(error);
+         setError(error);
+      }
+   }
+
+  const fetchvip = async () => {
+      try {
+         const response = await Api.get("/availbal");
+         if (response.data?.AvailBalance !== undefined) {
+            setAvailableBal(response.data.AvailBalance);
+         }
+
+         const response_vip = await Api.get("/get_vip");
+         
+         if (response_vip.data.success) {
+            setVip(response_vip.data.vip);
+         }
+
+
+      } catch (error) {
+         console.error("Error fetching servers:", error);
+      }
+   };
+  // Har VIP ka fake data (VIP1 se VIP7)
+  const vipData = [
+    {
+      level: "VIP 1",
+      title: "GPU 2 core computing power package",
+      pledge: "50 - 500 USDT",
+      runtime: "30 Days",
+      yield: "1.0% - 1.2%",
+      earning: "1.5 USDT",
+    },
+    {
+      level: "VIP 2",
+      title: "GPU 4 core computing power package",
+      pledge: "300 - 1500 USDT",
+      runtime: "45 Days",
+      yield: "1.6%-1.8%",
+      earning: "3 USDT",
+    },
+    {
+      level: "VIP 3",
+      title: "GPU 8 core high-performance package",
+      pledge: "800 - 3000 USDT",
+      runtime: "60 Days",
+      yield: "2.0%-2.3%",
+      earning: "5 USDT",
+    },
+    {
+      level: "VIP 4",
+      title: "GPU 16 core computing power package",
+      pledge: "1500 - 5000 USDT",
+      runtime: "75 Days",
+      yield: "2.5%-2.6%",
+      earning: "10 USDT",
+    },
+    {
+      level: "VIP 5",
+      title: "GPU 32 core computing power package",
+      pledge: "3000 - 10000 USDT",
+      runtime: "90 Days",
+      yield: "2.7%-2.8%",
+      earning: "15 USDT",
+    },
+    {
+      level: "VIP 6",
+      title: "GPU 64 core AI package",
+      pledge: "5000 - 20000 USDT",
+      runtime: "120 Days",
+      yield: "3.8%-4.3%",
+      earning: "20 USDT",
+    },
+    {
+      level: "VIP 7",
+      title: "GPU 128 core Ultra Performance package",
+      pledge: "10000 50000 USDT",
+      runtime: "180 Days",
+      yield: "4.5%-4.8%",
+      earning: "50 USDT",
+    },
+  ];
     const handleNavigation = (page) => {
         switch (page) {
             case 'dashboard':
@@ -58,20 +160,20 @@ const Mining = () => {
                <div data-v-aae501f4="" class="swiper-con">
                   <div data-v-aae501f4="" class="list">
                      <div data-v-aae501f4="" class="item">
-                        <div data-v-aae501f4="" class="text">Account Balance</div>
-                        <div data-v-aae501f4="" class="num">0 USDT</div>
+                        <div data-v-aae501f4="" class="text">Wallet Balance</div>
+                        <div data-v-aae501f4="" class="num">$ {availbal ? availbal : "0.00"}</div>
                      </div>
                      <div data-v-aae501f4="" class="item">
                         <div data-v-aae501f4="" class="text">Current level</div>
-                        <div data-v-aae501f4="" class="num">VIP </div>
+                        <div data-v-aae501f4="" class="num">{vip} </div>
                      </div>
                      <div data-v-aae501f4="" class="item">
-                        <div data-v-aae501f4="" class="text">Total pledge amount</div>
-                        <div data-v-aae501f4="" class="num">0 USDT</div>
+                        <div data-v-aae501f4="" class="text">Trade amount</div>
+                        <div data-v-aae501f4="" class="num">${incomes.tradingIncome ? incomes.tradingIncome : 0}</div>
                      </div>
                      <div data-v-aae501f4="" class="item">
                         <div data-v-aae501f4="" class="text">Today's earnings</div>
-                        <div data-v-aae501f4="" class="num">0 MCE</div>
+                        <div data-v-aae501f4="" class="num">${incomes.todayTotalIncome ? incomes.todayTotalIncome : 0}</div>
                      </div>
                   </div>
                </div>
@@ -97,22 +199,25 @@ const Mining = () => {
                </div>
                <div data-v-6030fa02="" class="mining-contain">
                   <ul data-v-6030fa02="" class="tabs">
-                     <li data-v-6030fa02="" class=""> VIP 0</li>
-                     <li data-v-6030fa02="" class=""> VIP 1</li>
-                     <li data-v-6030fa02="" class=""> VIP 2</li>
-                     <li data-v-6030fa02="" class=""> VIP 3</li>
-                     <li data-v-6030fa02="" class=""> VIP 4</li>
-                     <li data-v-6030fa02="" class=""> VIP 5</li>
-                     <li data-v-6030fa02="" class="on"> VIP 6</li>
-                     <li data-v-6030fa02="" class=""> VIP 7</li>
+                        {vipData.map((vip, index) => (
+          <li  data-v-6030fa02=""
+            key={index}
+            className={activeVip === index ? "on" : ""}
+            onClick={() => setActiveVip(index)}
+            style={{ cursor: "pointer" }}
+          >
+          {vip.level}
+          </li>
+        ))}
+                    
                   </ul>
                   <div data-v-6030fa02="" class="m-ming">
                      <div data-v-6030fa02="" class="top-title">
-                        <span data-v-6030fa02="" class="">GPU 2 core computing power package</span>
-                        <div data-v-6030fa02="" class="vip"> VIP1 <img data-v-6030fa02="" src="./static/img1757786439045/level-1-CnmNTKgH.png"/></div>
+                        <span data-v-6030fa02="" class="">{vipData[activeVip].title}</span>
+                        <div data-v-6030fa02="" class="vip">  {vipData[activeVip].level}{" "} <img data-v-6030fa02="" src="./static/img1757786439045/level-1-CnmNTKgH.png"/></div>
                      </div>
                      <div data-v-6030fa02="" class="run-logo">
-                        <div data-v-6030fa02="" class="t">GPU 2 core computing power package</div>
+                        <div data-v-6030fa02="" class="t">{vipData[activeVip].title}</div>
                         <img data-v-6030fa02="" src="./static//img1757786439045/run-logo-CU56rrdX.png" alt=""/>
                      </div>
                      <div data-v-6030fa02="" class="m-ming-list">
@@ -126,11 +231,11 @@ const Mining = () => {
                         </div>
                         <div data-v-6030fa02="" class="mml-item">
                            <div data-v-6030fa02="" class="text">Estimated earnings</div>
-                           <div data-v-6030fa02="" class="num num-green">0 USDT </div>
+                           <div data-v-6030fa02="" class="num num-green">{vipData[activeVip].earning} </div>
                         </div>
                         <div data-v-6030fa02="" class="mml-item" >
                            <div data-v-6030fa02="" class="text">yield</div>
-                           <div data-v-6030fa02="" class="num">1%-1.2%</div>
+                           <div data-v-6030fa02="" class="num">{vipData[activeVip].yield}</div>
                         </div>
                      </div>
                      <div data-v-6030fa02="" class="bnt bnt-2">
@@ -139,11 +244,11 @@ const Mining = () => {
                      <div data-v-6030fa02="" class="income-box">
                         <div data-v-6030fa02="" class="ib-item" >
                            <div data-v-6030fa02="" class="text">Pledge amount</div>
-                           <div data-v-6030fa02="" class="num"><img data-v-6030fa02="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIaSURBVHgB7ZQxTwJBEIXfKdFKQ6GVDVjZoY2t2tqIlXbqD0DkF3D8AwkklmJnB5VamIixs1EqrcTGSotTKwVy7tsLcnAD3AGV8SVDjmGZb9/M7gF/XYaYzeWSMIxFDCcLtVoGqZTlToY8y46OIqjXD2HbGFqh0Lv6NN2pMc+iRuMKo1NSG+gKZCttO4LRKay6dexOtGbIndCdCxiZnsZVPI4gWiuV8Pzx4UkjkSjzoTXDRiMtuSN0BEqrKPPBcZjL0Uaxc1V4chLxaLQttzE/j7gK6vrlBYWHh7bfS9UqrK8vL9K2U9jfP3SA+XzV7+zM5WWkVejiT0/YPDuDT1lqnlFDuaNdU1pBh7sLC4jNzmJxZgbhiQmxxXR0//amI1upSDNsKkOgeOFY+G5rC8+fn7p196+vsL6/NbjpkHnz9lZvjPmVuTmsqlg6PdVwySUPzYmKHQ9wagqpmxsUHh8hOaJYtKygFNtL6U6oDXRRtnloCp1Q/vFue1sX0g5VcYLoslNcyw2y9Txka8Wi5DCjrobZuocClG3lIYmpgizaTZwZARUV7IgwQw3jQ/vLW4C6xVZxA8lYTH9n8b3LS/TRL4xqf7UlErtwZipKt1S6Yz5hXqAP6DAwGTgaqAijjJ5/6zPToLD+wODQnjB/QP/QvjBqDH7kzDSLIWHUOPzq/PwC6+vsyOqgsGBAB1rugAaCDa58/kDHvwT9AALL7btZbx8UAAAAAElFTkSuQmCC" alt=""/> 100-500</div>
+                           <div data-v-6030fa02="" class="num"><img data-v-6030fa02="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIaSURBVHgB7ZQxTwJBEIXfKdFKQ6GVDVjZoY2t2tqIlXbqD0DkF3D8AwkklmJnB5VamIixs1EqrcTGSotTKwVy7tsLcnAD3AGV8SVDjmGZb9/M7gF/XYaYzeWSMIxFDCcLtVoGqZTlToY8y46OIqjXD2HbGFqh0Lv6NN2pMc+iRuMKo1NSG+gKZCttO4LRKay6dexOtGbIndCdCxiZnsZVPI4gWiuV8Pzx4UkjkSjzoTXDRiMtuSN0BEqrKPPBcZjL0Uaxc1V4chLxaLQttzE/j7gK6vrlBYWHh7bfS9UqrK8vL9K2U9jfP3SA+XzV7+zM5WWkVejiT0/YPDuDT1lqnlFDuaNdU1pBh7sLC4jNzmJxZgbhiQmxxXR0//amI1upSDNsKkOgeOFY+G5rC8+fn7p196+vsL6/NbjpkHnz9lZvjPmVuTmsqlg6PdVwySUPzYmKHQ9wagqpmxsUHh8hOaJYtKygFNtL6U6oDXRRtnloCp1Q/vFue1sX0g5VcYLoslNcyw2y9Txka8Wi5DCjrobZuocClG3lIYmpgizaTZwZARUV7IgwQw3jQ/vLW4C6xVZxA8lYTH9n8b3LS/TRL4xqf7UlErtwZipKt1S6Yz5hXqAP6DAwGTgaqAijjJ5/6zPToLD+wODQnjB/QP/QvjBqDH7kzDSLIWHUOPzq/PwC6+vsyOqgsGBAB1rugAaCDa58/kDHvwT9AALL7btZbx8UAAAAAElFTkSuQmCC" alt=""/> {vipData[activeVip].pledge}</div>
                         </div>
                         <div data-v-6030fa02="" class="ib-item">
                            <div data-v-6030fa02="" class="text">Running time</div>
-                           <div data-v-6030fa02="" class="num">3 minutes</div>
+                           <div data-v-6030fa02="" class="num">{vipData[activeVip].runtime}</div>
                         </div>
                      </div>
                   </div>

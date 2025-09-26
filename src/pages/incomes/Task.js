@@ -1,19 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Api from "../../Requests/Api";
 
 const Task = () => {
   const navigate = useNavigate();
-  const [activeButton, setActiveButton] = useState(""); // Track active button
+  const [activeButton, setActiveButton] = useState("");
+  const [vipLevel, setVipLevel] = useState(null); // backend se aayega
+  const [loading, setLoading] = useState(true);
+const [vipProgress, setVipProgress] = useState([]);
 
   const back = () => {
     navigate(-1);
   };
+const vipImages = [
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/349ce03f0cc4058bd4fcc30c31db1faa.png", // VIP1
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/689b0c037f4f6bfeead78d0aefe91e5d.png", // VIP2
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/40e3f438699b15bb96e4e7382a0aa9b2.png", // VIP3
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/bba44fa91cac1e2af95e5ca32ba054ce.png", // VIP4
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/bd47bae1bbe3038516b5a5e826e7369c.png", // VIP5
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/d095315185b14789ea37edca145a0a15.png", // VIP6
+  "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/349ce03f0cc4058bd4fcc30c31db1faa.png", // VIP7 (aap yaha last wali image de do jo aapko chahiye)
+];
 
   const handleRewardClick = () => {
     setActiveButton("reward");
     navigate("/reward-details"); // navigate to reward page
   };
-           
+         
+  
+  
+
+  useEffect(() => {
+    const fetchVIPProgress = async () => {
+      try {
+        const response = await Api.get("/checkVIPLevel");
+        console.log("response",response);
+        setVipProgress(response.data?.vipProgress || []);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching VIP progress:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchVIPProgress();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
     return (
         <div data-v-72d7289a="" data-v-418f83bb="" class="page task-page-out">
             <div data-v-72d7289a="" class="headers">
@@ -66,27 +99,47 @@ const Task = () => {
                                 <div data-v-418f83bb="" class="task-con">
                                     <div data-v-a998da64="" data-v-418f83bb="" role="feed" class="van-list" aria-busy="false">
                                         <div data-v-d42c0b7f="" data-v-418f83bb="" class="list">
-                                            <div data-v-d42c0b7f="" class="item">
+                                             {vipProgress.map((vip, index) => (
+                                            <div  key={index} data-v-d42c0b7f="" class="item">
                                                 <div data-v-d42c0b7f="" class="status"><span data-v-d42c0b7f="" class="btn pending">In progress</span></div>
                                                 <div data-v-d42c0b7f="" class="item-top">
-                                                    <img data-v-d42c0b7f="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/d4dfcfc675fc0e56a2d0c03301eee561.png" alt=""/>
-                                                        <div data-v-d42c0b7f="" class="box">
-                                                            <div data-v-d42c0b7f="" class="title"><span data-v-d42c0b7f="" class="">Upgrade to VIP1</span></div>
-                                                            <p data-v-d42c0b7f="" class="">Upgrade to VIP1 and receive 5 USDT reward</p>
-                                                        </div>
+                                                                  <img data-v-d42c0b7f="" src={vipImages[index]} alt={`VIP ${index + 1}`}/>
+
+                                                       <div className="box">
+              <div className="title">
+                <span>{`Upgrade to ${vip.vip}`}</span>
+              </div>
+              <p>{`Complete tasks to upgrade to ${vip.vip}`}</p>
+            </div>
                                                 </div>
                                                 <div data-v-d42c0b7f="" class="amount"><span data-v-d42c0b7f="">0 USDT</span></div>
                                                 <div data-v-d42c0b7f="" class="item-bot">
                                                     <div data-v-d42c0b7f="" class="progress">
-                                                        <div data-v-d42c0b7f="" class="van-progress" style={{background: 'rgb(235, 235, 235)',height: '0.12rem'}}>
-                                                            <span class="van-progress__portion" style={{width: '0%',background: 'rgb(48, 189, 100)'}}></span>
+                                                          <div
+                className="van-progress"
+                style={{
+                  background: "rgb(235, 235, 235)",
+                  height: "0.12rem",
+                }}
+              >
+                                                           <span
+                  className="van-progress__portion"
+                  style={{
+                    width: `${vip.overallPercent}%`,
+                    background: "rgb(48, 189, 100)",
+                  }}
+                ></span>
                                                         </div>
                                                     </div>
-                                                    <div data-v-d42c0b7f="" class="num"><span data-v-d42c0b7f="">0</span> /1</div>
+                                                   <div className="num">
+              <span>{vip.overallPercent}</span>% /100
+            </div>
                                                 </div>
                                                 <div data-v-d42c0b7f="" class="item-btn"><span data-v-d42c0b7f="" class="pending">Receive</span></div>
                                             </div>
-                                            <div data-v-d42c0b7f="" class="item">
+                                                  ))}
+
+                                            {/* <div data-v-d42c0b7f="" class="item">
                                                 <div data-v-d42c0b7f="" class="status"><span data-v-d42c0b7f="" class="btn pending">In progress</span></div>
                                                 <div data-v-d42c0b7f="" class="item-top">
                                                     <img data-v-d42c0b7f="" src="https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250622/349ce03f0cc4058bd4fcc30c31db1faa.png" alt=""/>
@@ -205,7 +258,7 @@ const Task = () => {
                                                     <div data-v-d42c0b7f="" class="num"><span data-v-d42c0b7f="">0</span> /1</div>
                                                 </div>
                                                 <div data-v-d42c0b7f="" class="item-btn"><span data-v-d42c0b7f="" class="pending">Receive</span></div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         
                                         <div class="van-list__finished-text"></div>
