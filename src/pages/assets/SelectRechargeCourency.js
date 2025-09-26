@@ -45,17 +45,11 @@ const RechargeCurrency = () => {
               {/* Currency Items */}
               {[
                 { name: "USDT", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/2c161d6ff1fdd3d4b8b19f51866e3a86.png" },
-                { name: "USDC", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/3e546c0e62248d9bec26855319dc25dd.png" },
-                { name: "TRX", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/4bd3122ec5f26eee8157b3a93b7ae000.png" },
-                { name: "DAI", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/ebcc1124904e897fb5d2c96c75dd85ca.jpg" },
-                { name: "BNB", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/0318e3072bb3a20b821bc8179c61297c.png" },
-                { name: "BTC", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/2719394e5775beb54774bb7d5bd221ef.png" },
-                { name: "ETH", img: "https://minecore-all.s3.ap-southeast-1.amazonaws.com/upload/20250621/19ec55a2e96ff980f0556afefd402a44.png" },
-              ].map((currency) => (
+             ].map((currency) => (
                 <div
                   key={currency.name}
                   data-v-bca86288=""
-                  className={`item ${selectedCurrency?.name === currency.name ? "selected" : ""}`}
+                  className={`item on ${selectedCurrency?.name === currency.name ? "selected" : ""}`}
                   onClick={() => setSelectedCurrency(currency)}
                   style={{ cursor: "pointer" }}
                 >

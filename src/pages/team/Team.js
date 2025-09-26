@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import Api from "../../Requests/Api";
 const Team = () => {
+  const [userDetails, setUserDetails] = useState(null);
+  const [teamRecord, setTeamRecord] = useState(null);
 
     const navigate = useNavigate();
       const back = () => {
@@ -40,6 +42,36 @@ const Team = () => {
         navigate('/not-found'); // fallback route
     }
   };
+
+ useEffect(() => {
+    getLevelTeam();
+  }, []);
+
+  const getLevelTeam = async () => {
+    try {
+      const res = await Api.get('/team');
+      console.log('level team',res.data);
+      setUserDetails(res.data.data);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
+ useEffect(() => {
+    getTeamRecord();
+  }, []);
+
+  const getTeamRecord = async () => {
+    try {
+      const res = await Api.get('/getTeamRecord');
+      console.log(' team',res.data);
+      setTeamRecord(res.data.data);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
+  
   // const navigate = useNavigate();
   // const copyToClipboard = () => {
   //   const textToCopy = document.getElementById('textToCopy').innerText;
@@ -94,7 +126,7 @@ const Team = () => {
                 <div data-v-922e37e2="" class="total">
                   <div data-v-922e37e2="" class="item">
                     <div data-v-922e37e2="" class="title">Team size</div>
-                    <div data-v-922e37e2="" class="num">0/0</div>
+                    <div data-v-922e37e2="" class="num">0/{teamRecord?.totalActive}</div>
                     <div data-v-922e37e2="" class="add"><img data-v-922e37e2="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAMCAYAAAB4MH11AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADtSURBVHgBrZO/FcIgEMbviJ2NIzgCbmAKa93AJs9nmQ1CNoidRQozgrUFjsAIGSELCCIa1AeBvKdfyR2/j/sDwo+il2wJCRTeoMIG4Q/SJgyI16QkwYt8t6U8KyAisaoZKHXwxUgIDlKeQAKLmVC+nwOS9WgDC+8VMDFweeO64fPXURc0cOABExeOLZDJQueWfQ4G4QqF7u35a4AEmEjr0g9PUpEeW8N6Dv5t4IUnU32h6pwtIVCBxM0Q/LNCjMFt8uAq+uE2aj4KAR6CD5uE4aZYvcNX3ecmBn/I7LsdYBzuvI7yfDYyNzdDHqE78zeThnude9kAAAAASUVORK5CYII=" alt=""/>+0</div>
                   </div>
                   <div data-v-922e37e2="" class="item">
@@ -176,22 +208,23 @@ const Team = () => {
                   <div data-v-86cad97a="" class="data-list">
                     <div data-v-86cad97a="" class="item">
                       <div data-v-86cad97a="" class="item-l">
-                        <div data-v-86cad97a="" class="logo"><img data-v-86cad97a="" src="data:image/png;base64,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" alt=""/></div>
+                        <div data-v-86cad97a="" class="logo">
+                        <img data-v-86cad97a="" src="data:image/png;base64,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" alt=""/></div>
                         <div data-v-86cad97a="" class="text">Generation data</div>
                         <div data-v-86cad97a="" class="bt" onClick={() => handleNavigation('GenerationData')}>more</div>
                       </div>
                       <div data-v-86cad97a="" class="item-r">
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team size</div>
-                          <div data-v-86cad97a="" class="num">0/0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.active_gen_team1total}/{userDetails?.gen_team1total}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative recharge</div>
-                          <div data-v-86cad97a="" class="num">0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team1Recharge}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative income</div>
-                          <div data-v-86cad97a="" class="num">0 MCE </div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team1Earning || "0"} MCE </div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team Rebate</div>
@@ -208,15 +241,15 @@ const Team = () => {
                       <div data-v-86cad97a="" class="item-r">
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team size</div>
-                          <div data-v-86cad97a="" class="num">0/0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.active_gen_team2total}/{userDetails?.gen_team2total}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative recharge</div>
-                          <div data-v-86cad97a="" class="num">0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team2Recharge}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative income</div>
-                          <div data-v-86cad97a="" class="num">0 MCE </div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team2Earning || "0"} MCE </div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team Rebate</div>
@@ -234,15 +267,15 @@ const Team = () => {
                       <div data-v-86cad97a="" class="item-r">
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team size</div>
-                          <div data-v-86cad97a="" class="num">0/0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.active_gen_team3total}/{userDetails?.gen_team3total}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative recharge</div>
-                          <div data-v-86cad97a="" class="num">0</div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team2Recharge}</div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Cumulative income</div>
-                          <div data-v-86cad97a="" class="num">0 MCE </div>
+                          <div data-v-86cad97a="" class="num">{userDetails?.gen_team3Earning || "0"} MCE </div>
                         </li>
                         <li data-v-86cad97a="">
                           <div data-v-86cad97a="" class="text">Team Rebate</div>

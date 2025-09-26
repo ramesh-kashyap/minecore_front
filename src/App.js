@@ -71,6 +71,8 @@ import Info from "./pages/profile/Info";
 import BindAddress from "./pages/profile/BindAddress";
 import P2P from "./pages/home/P2P";
 import ExchangeRecord from "./pages/team/ExchangeRecord";
+import WithdrawRecord from "./pages/assets/WithdrawRecord";
+import DepositRecord from "./pages/assets/DepositRecord";
 
 
 function AppContent() {
@@ -152,6 +154,8 @@ function AppContent() {
                 <Route path="/withdraw-currency" element={<SelectRechargeCourency />} />
                 <Route path="/submit-recharge" element={<SubmitRecharge />} />
                 <Route path="/bill-record" element={<BillRecord />} />
+                <Route path="/withdraw-record" element={<WithdrawRecord />} />
+                <Route path="/deposit-record" element={<DepositRecord />} />
                 <Route path="/bind-email" element={<BindEmail />} />
                 <Route path="/cash-carousel" element={<CashCarousel />} />
                 <Route path="/reward-details" element={<RewardDetail />} />
